@@ -1,5 +1,11 @@
-body {
-    Padding-top: 75px
-    
+body {  
+    padding-top: 75px;
+    padding-bottom: 75px;
 }
-Nav a {color: white;}
+
+Nav a {
+    color: white;
+}
+label {
+  font-weight: 700;  
+}
