@@ -13,7 +13,7 @@
 <body>
     <nav class="navbar navbar-dark bg-primary fixed-top row">
         <div class='col-lg-4 d-none d-lg-block'>
-            <a href='../user/profile.html'><i class="fas fa-chevron-left"></i></a>
+            <a href='website-list.html'><i class="fas fa-chevron-left"></i></a>
             <span class="navbar-brand mb-0 h1">Websites</span>
             <a class='float-right pt-2' href='website-new.html'><i class="fas fa-plus"></i></a>
         </div>
@@ -21,6 +21,49 @@
             <span class="navbar-brand mb-0 h1">New Website</span>
             <a class='float-right pt-2' href='website-list.html'><i class="fas fa-check"></i></a>   
         </div>             
+    </nav>
+    <section class='row'>
+        <div class='col-lg-4 d-none d-lg-block'>
+            <div class='container'>
+        <ul class='list-group'>
+                <li class='list-group-item'>
+                    <a href='../page/page-list.html'>Address Book App</a>
+                    <a class='float-right' href='website-edit.html'><i class="fas fa-cog"></i></a>
+                </li>        
+                <li class='list-group-item'>
+                    <a href='../page/page-list.html'>Blogger</a>
+                    <a class='float-right' href='website-edit.html'><i class="fas fa-cog"></i></a>
+                </li>
+                <li class='list-group-item'>
+                    <a href='../page/page-list.html'>Blogging App</a>
+                    <a class='float-right' href='website-edit.html'><i class="fas fa-cog"></i></a>
+                </li>
+                <li class='list-group-item'>
+                    <a href='../page/page-list.html'>Script Test App</a>
+                    <a class='float-right' href='website-edit.html'><i class="fas fa-cog"></i></a>
+                </li> 
+            </ul> 
+            </div>
+
+        </div>
+        <div class='col-lg-8'>
+            <div class='container'>
+                <form>
+                    <div class='form-group'>
+                        <label for='name'>Name</label>
+    <input placeholder='Enter website name...' class='form-control' type="text" id='name' name='name'>
+                    </div>
+                    <div class='form-group'>
+                        <Label for='description'>Description</Label>
+                        <textarea rows='5' placeholder='Enter website description' class='form-control id='description' name='description'></textarea>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <nav class="navbar navbar-dark bg-primary fixed-bottom">             
+            <a href='../user/profile.html'><i class='fas fa-user'></i></a>
     </nav>
 
 </body>
