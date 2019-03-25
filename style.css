@@ -2,11 +2,15 @@ body {
     padding-top: 75px;
     padding-bottom: 75px;
 }
-
-Nav a {
+/* Website */ 
+nav.navbar-dark a {
     color: white;
 }
 label {
   font-weight: 700;  
 }
 
+/* Pages */
+nav.navbar-light a{
+  color: black;
+}
