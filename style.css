@@ -2,10 +2,21 @@ body {
     padding-top: 75px;
     padding-bottom: 75px;
 }
-
-Nav a {
+footer{
+  width: 100%;
+}
+/* Website */ 
+nav.navbar-dark a {
     color: white;
 }
 label {
   font-weight: 700;  
 }
+/* Pages */
+nav.navbar-light a{
+    color: white;
+}
+.Pages {
+  color: white
+}
+  
