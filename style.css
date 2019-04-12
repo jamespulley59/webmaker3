@@ -2,8 +2,11 @@ body {
     padding-top: 75px;
     padding-bottom: 75px;
 }
+header {
+  margin: 1rem;
+}
 footer{
-  width: 100%;
+  margin: 1rem;
 }
 
 .full-width {
