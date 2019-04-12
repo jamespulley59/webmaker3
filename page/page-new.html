@@ -16,21 +16,22 @@
             <a href='page-list.html'><i class="fas fa-check"></i></a>
     </nav>
     <Section class='container'>
-    <ul class='list-group'>
-        <li class='list-group-item'>           
-            <a href='page-list.html'>Page Name</a>
-            <input placeholder='Type page Name Here' class='form-control' name='new page' id='new name'>           
-            <a class='float-right'  href='page-edit.html'><i class="fas fa-cog"></i></a>
-        </li>        
-        <li class='list-group-item'>
-            <a href='page-list.html'>Page Title</a>
-            <a class='float-right' placeholder='Type Page Title Here' href='page-edit.html'></a>
-        </li>        
-    </ul>
-    </Section>
+        <form>
+            <div class='form-group'>
+                <label for='name'>Name</label>
+                <input placeholder='Type Name Here' class='form-control' type='text' id='name' name='name'>
+            </div>
+            <div class='form-group'>
+                <label for='title'>Title</label>
+                <input placeholder='Type Title Here' class='form-control' type='tile' id='title' name='title'>
+            </div>  
+
     <nav class="navbar navbar-dark bg-primary fixed-bottom">
-        <a href='../user/profile.html'><i class='fas fa-user'></i></a>
-    </nav>                    
+        <div class='full-width'>
+        <a href='../user/profile.html'><i class='float-right fas fa-user'></i></a>
+        </div>
+    </nav>
+                        
 </body>
 </html>   
 </body>
