@@ -5,6 +5,11 @@ body {
 footer{
   width: 100%;
 }
+
+.full-width {
+  width:100%
+}
+
 /* Website */ 
 nav.navbar-dark a {
     color: white;
