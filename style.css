@@ -28,12 +28,9 @@ label {
 }
 /* Pages */
 nav.navbar-light a{
-    color: white;
+    color: #8d4343;
 }
 .Pages {
   color: white
 }
   
-.navbar {
-  margin: 0 1rem;
-}
