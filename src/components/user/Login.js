@@ -1,24 +1,25 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-export default class Login extends React.Component {
+export default class Login extends Component {
     render() {
         return(
-            <nav class="navbar navbar-dark bg-primary fixed-top">
-        <span class="navbar-brand mb-0 h1">Login</span>        
-    </nav>
-    <div class='container'></div>
+    <div>       
+    <nav className="navbar navbar-dark bg-primary fixed-top">
+        <span className="navbar-brand mb-0 h1">Login</span>        
+    </nav>    
 <form>
-    <div class='form-group'>
-        <label for='username'>Username</label>
-        <input placeholder='Username' class='form-control' type='text' id='username' name='username'/>           
+    <div className='form-group'>
+        <label htmlFor='username'>Username</label>
+        <input placeholder='Type Username Here' className='form-control' type='text' id='username' name='username'/>           
     </div>
-    <div class='form-group'>
-        <label for='password'>Password</label>
-        <input placeholder='Password' type='text' class='form-control' id='password' name='password'/>
+    <div className='form-group'>
+        <label htmlFor='password'>Password</label>
+        <input placeholder='Type Password Here' type='text' className='form-control' id='password' name='password'/>
     </div>
-    <a class='btn btn-success btn-block' href='profile.html'>Login</a>
-    <a class='btn btn-primary btn-block' href='register.html'>Register</a>
-</form> 
+    <a className='btn btn-success btn-block' href='profile.html'>Login</a>
+    <a className='btn btn-primary btn-block' href='register.html'>Register</a>
+</form>
+ </div>
         )
     }
 }
