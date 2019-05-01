@@ -45,11 +45,11 @@ export default class WebsiteEdit extends Component {
                 <div className='container'>
                     <form>
                         <div> className='form-group'>
-                            <label for='name'>Name</label>
+                            <label htmlFor='name'>Name</label>
                              <input placeholder='Enter website name...' className='form-control' type="text" id='name' name='name'/>
                         </div>
                         <div className='form-group'>
-                            <label for='description'>Description</label>
+                            <label htmlFor='description'>Description</label>
                             <textarea rows='5' placeholder='Enter website description...' className='form-control' id='description' name='description'></textarea>
                         </div>
             <a href="website-list.html" className="btn btn-success btn-block">Delete</a>    
@@ -57,7 +57,7 @@ export default class WebsiteEdit extends Component {
                 </div>
             </div>
       
-        <div> className='full-width'>
+        <div>
         <nav className="navbar navbar-dark bg-primary fixed-bottom">
             
             <a href='../user/profile.html'><i className='float-right fas fa-user'></i></a>
