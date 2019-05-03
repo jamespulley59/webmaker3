@@ -29,7 +29,7 @@ function App() {
         <Route exact path= "/user/:uid/website/:wid/page" component={PageList} />
         <Route exact path= "/user/:uid/website/:wid/page/new" component={PageNew} />
         <Route exact path= "/user/:uid/website/:wid/page/:pid" component={PageEdit} />
-        <Route exact path= "/user/:uid/website/:wid/page/:pid/widget	" component={WidgetList} />
+        <Route exact path= "/user/:uid/website/:wid/page/:pid/widget" component={WidgetList} />
         <Route exact path= "/user/:uid/website/:wid/page/:pid/widget/new" component={WidgetChooser} />
         <Route exact path= "/user/:uid/website/:wid/page/:pid/widget/:wgid	" component={WidgetEdit} />        
       </Switch>

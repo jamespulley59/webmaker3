@@ -42,3 +42,8 @@ body {
 .bg-primary a{
     color: white;
 }
+.icon-right {
+    position: absolute;
+    right: 15px;
+    z-index: 1
+}
