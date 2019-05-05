@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+mport React, {Component} from 'react';
 export default class WidgetList extends Component {
     render() {
         return(
@@ -64,8 +64,7 @@ export default class WidgetList extends Component {
             <div class='embed-responsive embed-responsive-16by9'>
            
             <iframe title="roses" src="https://www.youtube.com/embed/I7pWhXv4ZVE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div>
+            </div>            
             <div class='icon-right'>
                 <a href='widget-heading.html'>
                     <i class='fas fa-cog'></i><i class='fas fa-bars'></i>
@@ -74,7 +73,15 @@ export default class WidgetList extends Component {
             <p>zvlo;iv;ozsif;zadfi;bvzib z;ibj;fipbz'odfjb'pojpb'zojb 'zopjb' obj zxopjbf'o'ob kgkvygklgkli
                 DSAbgfsznhxdffhymmnjcdmcxmmcxnmxcmgillugh</p>                           
         </div>    
-        </div>
+        <nav class='navbar navbar-light bg-light fixed-bottom'>
+            <div>
+                <i fas fa-play></i>
+                <i fas fa-eye></i>
+            </div>
+                <a href='../user/profile.html'>
+                    <i class=' fas fa-user text-primary'></i>
+                </a>  
+        </nav>
     </div>   
 </div>        
         )
