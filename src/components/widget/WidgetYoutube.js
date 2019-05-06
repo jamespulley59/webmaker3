@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
-
+import {Link} from react-router-dom;
 export default class WidgetYuotube extends Component {
   render() {
     return (
 <div>
    <nav className='navbar navbar-light bg-light fixed-top'>
-        <a href='widget-list.html'>
+        <Link to='/user/:uid/website/:wid/page/:pid/widget'>
             <i className='fas fa-chevron-left'></i>
-        </a>
-        <span className='navbar-brand mb-0 h1'>Widget Edit</span>
-        <a href='widget-list.html'>
+        </Link>
+            <span className='navbar-brand mb-0 h1'>Widget Edit</span>
+        <Link to='/user/:uid/website/:wid/page/:pid/widget'>
             <i className='fas fa-check'></i>
-        </a>
+        </Link>
     </nav>
     <div className='container'>
         <form>
@@ -36,13 +36,13 @@ export default class WidgetYuotube extends Component {
                             </div>
                     </div>
             </div>          
-                <a href='widget-list.html' className='btn btn-danger btn-block'>Delete</a>
+                <Link to='/user/:uid/website/:wid/page/:pid/widget' className='btn btn-danger btn-block'>Delete</Link>
         </form>
     </div>
     <nav className='navbar navbar-light bg-light fixed-bottom'>
-        <a href='../user/profile.html'>
+        <Link to='../user/profile.html'>
             <i className ='fas fa-user'></i>
-        </a>
+        </Link>
     </nav> 
 </div>
     )

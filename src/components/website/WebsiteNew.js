@@ -1,18 +1,26 @@
 import React, { Component } from 'react'
-
+import {Link} from react-router-dom;
 export default class WebsiteNew extends Component {
   render() {
     return (
 <div>
 <nav className="navbar navbar-dark bg-primary fixed-top row">
     <div className='col-lg-4 d-none d-lg-block'>
-        <a href='website-list.html'><i className="fas fa-chevron-left"></i></a>
-        <span className="navbar-brand mb-0 h1">New Websites</span>
-        <a className='float-right pt-2' href='website-new.html'><i className="fas fa-plus"></i></a>
+        <Link to='/user/:uid'>
+            <i className="fas fa-chevron-left"></i>
+        </Link>
+            <span className="navbar-brand mb-0 h1">New Websites</span>
+        <Link className='float-right pt-2' to='/user/:uid/website/new'>
+        <i className="fas fa-plus"></i>
+        </Link>
     </div>
     <div className='col-lg-8'>                     
-        <a className="d-lg-none" href='../user/profile.html'><span className="navbar-brand mb-0 h1">New Websites</span></a>            
-        <a className='float-right pt-2' href='website-list.html'><i className="fas fa-check"></i></a>   
+        <Link className="d-lg-none" to='/user/:uid'>
+        <span className="navbar-brand mb-0 h1">New Websites</span>
+        </Link>            
+        <Link className='float-right pt-2' to='/user/:uid/website'>
+        <i className="fas fa-check"></i>
+        </Link>   
     </div>             
 </nav>
 <section className='row'>
@@ -20,20 +28,28 @@ export default class WebsiteNew extends Component {
     <div className='container'>
     <ul className='list-group'>
         <li className='list-group-item'>
-            <a href='../page/page-list.html'>Address Book App</a>
-            <a className='float-right' href='website-edit.html'><i className="fas fa-cog"></i></a>
+            <Link to='/user/:uid/website/:wid/pag'>Address Book App</Link>
+            <Link className='float-right' to='/user/:uid/website/:wid'>
+                <i className="fas fa-cog"></i>
+            </Link>
         </li>        
         <li className='list-group-item'>
-            <a href='../page/page-list.html'>Blogger</a>
-            <a className='float-right' href='website-edit.html'><i className="fas fa-cog"></i></a>
+            <Link to='/user/:uid/website/:wid/page'>Blogger</Link>
+            <Link className='float-right' to='/user/:uid/website/:wid'>
+                <i className="fas fa-cog"></i>
+            </Link>
         </li>
         <li className='list-group-item'>
-            <a href='../page/page-list.html'>Blogging App</a>
-            <a className='float-right' href='website-edit.html'><i className="fas fa-cog"></i></a>
+            <Link to='/user/:uid/website/:wid/page'>Blogging App</Link>
+            <Link className='float-right' to='/user/:uid/website/:wid'>
+                <i className="fas fa-cog"></i>
+            </Link>
         </li>
         <li className='list-group-item'>
-            <a href='../page/page-list.html'>Script Test App</a>
-            <a className='float-right' href='website-edit.html'><i className="fas fa-cog"></i></a>
+            <Link to='/user/:uid/website/:wid/page'>Script Test App</Link>
+            <Link className='float-right' to='/user/:uid/website/:wid'>
+                <i className="fas fa-cog"></i>
+            </Link>
         </li>  
     </ul> 
     </div>            
@@ -52,11 +68,14 @@ export default class WebsiteNew extends Component {
             </form>
         </div>
     </div>
-</section> 
-    <div className='full-width'>             
-            <a href='../user/profile.html'><i className=' float-right fas fa-user'></i></a>
-    <nav className="navbar navbar-dark bg-primary fixed-bottom"></nav>        
-    </div> 
+</section>
+    <nav className="navbar navbar-dark bg-primary fixed-bottom">
+        <div className='full-width'>             
+                <Link to='../user/profile.html'>
+                    <i className=' float-right fas fa-user'></i>
+                </Link>            
+        </div>
+    </nav> 
 </div>
     )
   }

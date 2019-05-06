@@ -1,46 +1,46 @@
 import React, { Component } from 'react'
-
+import {Link} from react-router-dom;
 export default class WidgetChooser extends Component {
   render() {
     return (
       <div>
         <nav className="navbar navbar-light bg-light fixed-top">
-              <a href='widget-list.html'>
+              <Link to='/user/:uid/website/:wid/page/:pid/widget'>
                   <i className="fas fa-chevron-left"></i>
-              </a>
+              </Link>
                   <span className="navbar-brand mb-0 h1">Choose Widgets</span><span></span>  
-          </nav>
+        </nav>
           <div className='container'>
             <ul className='list-group list-group-flush'>
               <li className='list-group-item'>
-                <a href='widget-heading.html'>Header</a>
+                <Link to='#'>Header</Link>
               </li>
               <li className='list-group-item'>
-                <a href='#'>Label</a>
+                <Link to='#'>Label</Link>
               </li>
               <li className='list-group-item'>
-                <a href='#'>HTML</a>                
+                <Link to='#'>HTML</Link>                
               </li>
               <li className='list-group-item'>
-                <a href='#'>Text Input</a>
+                <Link to='#'>Text Input</Link>
               </li>
               <li className='list-group-item'>
-                <a href='#'>Link</a>
+                <Link to='#'>Link</Link>
               </li>
               <li className='list-group-item'>
-                <a href='#'>Button</a>                
+                <Link to='#'>Button</Link>                
               </li>
               <li className='list-group-item'>
-                <a href='widget-image.html'>Image</a>                
+                <Link to='#'>Image</Link>                
               </li>
               <li className='list-group-item'>
-                <a href='widget-youtube.html'>Youtube</a>
+                <Link to='#'>Youtube</Link>
               </li>
               <li className='list-group-item'>
-                <a href='#'>Data Table</a>
+                <Link to='#'>Data Table</Link>
               </li>
               <li className='list-group-item'>
-                <a href='#'>Repeater</a>                
+                <Link to='#'>Repeater</Link>                
               </li>
             </ul>
           </div>

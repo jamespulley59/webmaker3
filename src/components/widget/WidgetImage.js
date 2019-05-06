@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
-
+import {Link} from react-router-dom;
 export default class WidgetImage extends Component {
   render() {
     return (
 <div>
     <nav className='navbar navbar-light bg-light fixed-top'>
-        <a href='widget-list.html'>
+        <Link to='/user/:uid/website/:wid/page/:pid/widget'>
             <i className='fas fa-chevron-left'></i>
-        </a>
-        <span className='navbar-brand mb-0 h1'>Widget Edit</span>
-        <a href='widget-list.html'>
+        </Link>
+            <span className='navbar-brand mb-0 h1'>Widget Edit</span>
+        <Link to='/user/:uid/website/:wid/page/:pid/widget'>
             <i className='fas fa-check'></i>
-        </a>
-    </nav>
+        </Link>
+   </nav>
     <div className='container'>
         <form>
             <div className='form-group'>
@@ -38,7 +38,7 @@ export default class WidgetImage extends Component {
             </div>
             <div className='form-group'>
                 <label htmlFor='width'>Width</label>
-                <input placeholder=' Type Image URL Here' id='url' name='url' type='text' className='form-control' />
+                <input id='url' name='url' type='text' className='form-control' />
                     <Datalist id='tickmarks' />
                         <option value='0' label='0%' />
                         <option value='10' />                        
@@ -56,16 +56,16 @@ export default class WidgetImage extends Component {
                 <label htmlFor='file'>File</label>
                 <input type='file' id='file' name='file' className='form-control' />
             </div>
-            <a href='#' className='btn btn-primary btn-block'>Upload Image</a>
-            <a href='widget-list.html' className='btn btn-danger btn-block'>Delete</a>
+                <Link to='#' className='btn btn-primary btn-block'>Upload Image</Link>
+                <Link to='/user/:uid/website/:wid/page/:pid/widget' className='btn btn-danger btn-block'>Delete</Link>
         </form>
     </div>
-    <nav className='navbar navbar-light bg-light fixed-bottom'>
-        <a href='../user/profile.html'>
-            <i className ='fas fa-user'></i>
-        </a>
-    </nav>
-    </div>
+        <nav className='navbar navbar-light bg-light fixed-bottom'>
+            <Link to='../user/profile.html'>
+                <i className ='fas fa-user'></i>
+            </Link>
+        </nav>
+</div>
     )
     }
 }
