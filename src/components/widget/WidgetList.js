@@ -1,4 +1,5 @@
-mport React, {Component} from 'react';
+import React, {Component} from 'react';
+
 export default class WidgetList extends Component {
     render() {
         return(
@@ -31,7 +32,7 @@ export default class WidgetList extends Component {
         </div>
         <div>
             <div class='img-fluid icon-right'>
-                <a href='widget-heading.html'>
+                <a href='widget-image.html'>
                     <i class='fas fa-cog'></i><i class='fas fa-bars'></i>
                 </a>
             </div>
@@ -57,12 +58,11 @@ export default class WidgetList extends Component {
         </div>
         <div>
             <div class='icon-right'>
-                <a href='widget-heading.html'>
+                <a href='widget-youtube.html'>
                     <i class='fas fa-cog'></i><i class='fas fa-bars'></i>
                 </a>
             </div>
-            <div class='embed-responsive embed-responsive-16by9'>
-           
+            <div class='embed-responsive embed-responsive-16by9'>           
             <iframe title="roses" src="https://www.youtube.com/embed/I7pWhXv4ZVE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>            
             <div class='icon-right'>

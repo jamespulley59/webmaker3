@@ -44,7 +44,6 @@ export default class WidgetChooser extends Component {
               </li>
             </ul>
           </div>
-
       </div>
     )
   }
