@@ -12,7 +12,6 @@ export default class WebsiteNew extends Component {
     </div>
     <div className='col-lg-8'>                     
         <a className="d-lg-none" href='../user/profile.html'><span className="navbar-brand mb-0 h1">New Websites</span></a>                
-        
         <a className='float-right pt-2' href='website-list.html'><i className="fas fa-check"></i></a>   
     </div>             
 </nav>

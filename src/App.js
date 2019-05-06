@@ -12,9 +12,9 @@ import PageNew from './components/page/PageNew';
 import PageEdit from './components/page/PageEdit';
 import WidgetList from './components/widget/WidgetList';
 import WidgetChooser from './components/widget/WidgetChooser';
-import WidgetEdit from './components/widget/WidgetEdit';
-import WidgetImage from './components/widget/WidgetImage';
-
+import WidgetEdit from './components/widget/WidgetHeading';
+// import WidgetImage from './components/widget/WidgetImage';
+// import WidgetHeading from './components/widget/WidgetHeading';
 
 function App() { 
 
@@ -33,9 +33,9 @@ function App() {
         <Route exact path= "/user/:uid/website/:wid/page/:pid" component={PageEdit} />
         <Route exact path= "/user/:uid/website/:wid/page/:pid/widget" component={WidgetList} />
         <Route exact path= "/user/:uid/website/:wid/page/:pid/widget/new" component={WidgetChooser} />
-        <Route exact path= "/user/:uid/website/:wid/page/:pid/widget/:wgid" component={WidgetEdit} />
-       
-        {/* <Route exact path= "/user/:uid/website/:wid/page/:pid/widget/:wgid	" component={WidgetImage} />         */}
+        <Route exact path= "/user/:uid/website/:wid/page/:pid/widget/:wgid" component={WidgetImage} />       
+        {/* <Route exact path= "/user/:uid/website/:wid/page/:pid/widget/:wgid" component={WidgetYoutube} />         */}
+        {/* <Route exact path= "/user/:uid/website/:wid/page/:pid/widget/:wgid" component={WidgetHeading} />  */}
       </Switch>
     </Router>
   )  
