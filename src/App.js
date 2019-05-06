@@ -11,8 +11,10 @@ import PageList from './components/page/PageList';
 import PageNew from './components/page/PageNew';
 import PageEdit from './components/page/PageEdit';
 import WidgetList from './components/widget/WidgetList';
-import WidgetEdit from './components/widget/WidgetEdit';
 import WidgetChooser from './components/widget/WidgetChooser';
+import WidgetEdit from './components/widget/WidgetEdit';
+import WidgetImage from './components/widget/WidgetImage';
+
 
 function App() { 
 
@@ -31,7 +33,9 @@ function App() {
         <Route exact path= "/user/:uid/website/:wid/page/:pid" component={PageEdit} />
         <Route exact path= "/user/:uid/website/:wid/page/:pid/widget" component={WidgetList} />
         <Route exact path= "/user/:uid/website/:wid/page/:pid/widget/new" component={WidgetChooser} />
-        <Route exact path= "/user/:uid/website/:wid/page/:pid/widget/:wgid	" component={WidgetEdit} />        
+        <Route exact path= "/user/:uid/website/:wid/page/:pid/widget/:wgid" component={WidgetEdit} />
+       
+        {/* <Route exact path= "/user/:uid/website/:wid/page/:pid/widget/:wgid	" component={WidgetImage} />         */}
       </Switch>
     </Router>
   )  
