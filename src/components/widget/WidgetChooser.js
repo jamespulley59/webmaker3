@@ -4,42 +4,42 @@ export default class WidgetChooser extends Component {
   render() {
     return (
       <div>
-        <nav class="navbar navbar-light bg-light fixed-top">
+        <nav className="navbar navbar-light bg-light fixed-top">
               <a href='widget-list.html'>
-                  <i class="fas fa-chevron-left"></i>
+                  <i className="fas fa-chevron-left"></i>
               </a>
-                  <span class="navbar-brand mb-0 h1">Choose Widgets</span><span></span>  
+                  <span className="navbar-brand mb-0 h1">Choose Widgets</span><span></span>  
           </nav>
-          <div class='container'>
-            <ul class='list-group list-group-flush'>
-              <li class='list-group-item'>
+          <div className='container'>
+            <ul className='list-group list-group-flush'>
+              <li className='list-group-item'>
                 <a href='widget-heading.html'>Header</a>
               </li>
-              <li class='list-group-item'>
+              <li className='list-group-item'>
                 <a href='#'>Label</a>
               </li>
-              <li class='list-group-item'>
+              <li className='list-group-item'>
                 <a href='#'>HTML</a>                
               </li>
-              <li class='list-group-item'>
+              <li className='list-group-item'>
                 <a href='#'>Text Input</a>
               </li>
-              <li class='list-group-item'>
+              <li className='list-group-item'>
                 <a href='#'>Link</a>
               </li>
-              <li class='list-group-item'>
+              <li className='list-group-item'>
                 <a href='#'>Button</a>                
               </li>
-              <li class='list-group-item'>
+              <li className='list-group-item'>
                 <a href='widget-image.html'>Image</a>                
               </li>
-              <li class='list-group-item'>
+              <li className='list-group-item'>
                 <a href='widget-youtube.html'>Youtube</a>
               </li>
-              <li class='list-group-item'>
+              <li className='list-group-item'>
                 <a href='#'>Data Table</a>
               </li>
-              <li class='list-group-item'>
+              <li className='list-group-item'>
                 <a href='#'>Repeater</a>                
               </li>
             </ul>

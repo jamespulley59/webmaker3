@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import {Link} from react-router-dom;
 export default class Register extends Component {
     render() {
         return(
@@ -14,23 +14,23 @@ export default class Register extends Component {
           
             <div className='form-group'>
                 <label htmlFor='username'>Username</label>
-                <input placeholder='Type Username Here' className='form-control' type='text' id='username' name='username'/>
+                <input placeholder='Type Username Here' className='form-control' type='text' id='username' name='username' />
             </div>
             <div className='form-group'>
                 <label htmlFor='password'>Password</label>
-                <input placeholder='Type Password Here' className='form-control' type='text' id='password' name='password'/>
+                <input placeholder='Type Password Here' className='form-control' type='password' id='password' name='password' />
             </div>
             <div className='form-group'>
                 <label htmlFor='confirmpassword'>Confirm Password</label>
-                <input placeholder='Confirm Your Password Here' className='form-control' type='text' id='password' name='password'/>
+                <input placeholder='Confirm Your Password Here' className='form-control' type='password' id='password' name='password' />
             </div>
-            <a className='btn btn-success btn-block' href='../website/website-list.html'>Register</a>
-            <a href="login.html" className='btn btn-primary btn-block'>Cancel</a>
+            <Link className='btn btn-success btn-block' to='/user/123'>Register</Link>
+            <Link to="/login" className='btn btn-danger btn-block'>Cancel</Link>
         </form>
     
         <div>
             <nav className="navbar navbar-dark bg-primary fixed-bottom">             
-                <a href='profile.html'><i className='fas fa-user'></i></a>
+                <Link to='/user/:uid'><i className='fas fa-user'></i></Link>
             </nav>
         </div> 
         </div>

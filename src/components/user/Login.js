@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from react-router-dom;
 export default class Login extends Component {
     render() {
         return(
@@ -17,8 +18,8 @@ export default class Login extends Component {
         <label htmlFor='password'>Password</label>
         <input placeholder='Type Password Here...' type='text' className='form-control' id='password' name='password' />
     </div>
-        <a className='btn btn-success btn-block' href='profile.html'>Login</a>
-        <a className='btn btn-primary btn-block' href='register.html'>Register</a>
+        <Link className='btn btn-success btn-block' to='/user/123'>Login</Link>
+        <Link className='btn btn-primary btn-block' to='/register'>Register</Link>
 </form>
 </div>
         )
