@@ -4,10 +4,11 @@ body {
     color: #428bca;
 }
 header {
-  margin: 1rem;
+  margin: 1rem; 
 }
 footer{
   margin: 1rem;
+  float: right;
 }
 .list-group-item {
   margin-top: 5px;
@@ -52,4 +53,7 @@ body {
 }
 a, a:hover {
   text-decoration: none;
+}
+h1 {
+  text-align: center;
 }

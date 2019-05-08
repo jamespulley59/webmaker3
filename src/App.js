@@ -15,8 +15,15 @@ import WidgetChooser from './components/widget/WidgetChooser';
 
 export default class App extends Component {
 
-  state = {
+  addUser = (user) => {
+    const newUsers = this.state.users;
+    newUsers.push(user);
+    this.setState({
+      users: newUsers
+    })
+  } 
 
+  state = {
     users: [
       {_id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder", email: "alice@gmail.com"},
       {_id: "234", username: "bob", password: "bob", firstName: "Bob", lastName: "Marley", email: "bob@whatever.com"},
@@ -34,7 +41,7 @@ export default class App extends Component {
       { _id: "789", name: "Chess", developerId: "234", description: "Lorem" }    
     ],
   
-    page: [
+    pages: [
       { _id: "321", name: "Post 1", websiteId: "456", title: "Lorem" },
       { _id: "432", name: "Post 2", websiteId: "456", title: "Lorem" },
       { _id: "543", name: "Post 3", websiteId: "456", title: "Lorem" }  
@@ -43,9 +50,9 @@ export default class App extends Component {
     widgets: [
       { _id: "123", widgetType: "HEADING", pageId: "321", size: 2, text: "GIZMODO"},
       { _id: "234", widgetType: "HEADING", pageId: "321", size: 4, text: "Lorem ipsum"},
-      { _id: "345", widgetType: "IMAGE", pageId: "321", width: "100%", url: "https://www.gettyimages.ie/gi-resources/images/      Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg"},
+      { _id: "345", widgetType: "IMAGE", pageId: "321", width: "100%", url: "https://www.gettyimages.ie/gi-resources/images/            Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg"},
       { _id: "567", widgetType: "HEADING", pageId: "321", size: 4, text: "Lorem ipsum"},
-      { _id: "678", widgetType: "YOUTUBE", pageId: "321", width: "100%", url: "https://youtu.be/AM2Ivdi9c4E" },
+      { _id: "678", widgetType: "YOUTUBE", pageId: "321", width: "100%", url: "https://youtu.be/AM2Ivdi9c4E" }
     ],
   }
 
@@ -54,11 +61,11 @@ export default class App extends Component {
     return (
     <Router className="app">
       <Switch>
-        <Route exact path= "/" component={Login} />
-        <Route exact path= "/login" component={Login} />
-        <Route exact path= "/register" component={Register} />    
-        <Route exact path= "/user/:uid" component={Profile} />        
-        <Route exact path= "/user/:uid/website" component={WebsiteList} />
+        <Route exact path= "/" render={props => (<Login {...props} users={this.state.users} />)} />
+        <Route exact path= "/login" render={props => (<Login {...props} users={this.state.users} />)} />
+        <Route exact path= "/register" render={props => (<Register {...props} users={this.state.users} addUser={this.addUser} />)} />    
+        <Route exact path= "/user/:uid" render={props => (<Profile {...props} users={this.state.users} />)} />        
+        <Route exact path= "/user/:uid/website" render={props => (<WebsiteList {...props} users={this.state.users} />)} />
         <Route exact path= "/user/:uid/website/new" component={WebsiteNew} />
         <Route exact path= "/user/:uid/website/:wid" component={WebsiteEdit} />
         <Route exact path= "/user/:uid/website/:wid/page" component={PageList} />

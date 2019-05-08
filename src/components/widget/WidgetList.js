@@ -5,7 +5,7 @@ export default class WidgetList extends Component {
         return(
 <div>
     <nav className="navbar fixed-top navbar-light bg-light">
-        <Link to='/user/:uid/website/:wid/pagel'>
+        <Link to='/user/'>
             <i className="fa fa-chevron-left"></i>
         </Link>
             <span class ='navbar-brand mb-0 h1'>Widgets</span>

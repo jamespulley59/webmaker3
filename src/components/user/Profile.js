@@ -1,10 +1,15 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+
 export default class Profile extends Component {
+
+    componentDidMount() {
+        
+    }
     render() {
         return(
     <div>
-    <nav className="navbar navbar-dark bg-primary fixed-top " to='/user/:uid'>
+    <nav className="full-width navbar navbar-dark bg-primary fixed-top " to='/user/:uid'>
         <span></span>
         <span className="navbar-brand mb-0 h1">Profile</span>
         <Link to='/user/:uid'><i className='fas fa-check'></i></Link>
@@ -32,7 +37,9 @@ export default class Profile extends Component {
     </form>
             
     <nav className='full-width navbar navbar-dark bg-primary fixed-bottom'>
-        <a href="/user/:uid"><i className='float-right fas fa-user'></i></a>
+            <span></span>
+            <span></span>
+        <a href="/user/:uid"><i className='fas fa-user'></i></a>
     </nav>
     </div>
     </div>
