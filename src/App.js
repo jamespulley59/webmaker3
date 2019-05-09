@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.css';
+
 import Login from './components/user/Login';
 import Profile from './components/user/Profile';
 import Register from './components/user/Register';
@@ -68,7 +69,7 @@ export default class App extends Component {
         <Route exact path= "/user/:uid/website" render={props => (<WebsiteList {...props} users={this.state.users} />)} />
         <Route exact path= "/user/:uid/website/new" component={WebsiteNew} />
         <Route exact path= "/user/:uid/website/:wid" component={WebsiteEdit} />
-        <Route exact path= "/user/:uid/website/:wid/page" component={PageList} />
+        <Route exact path= "/user/:uid/website/:wid/page" render={ props => (PageList {...props} pages={this.state.page})} />
         <Route exact path= "/user/:uid/website/:wid/page/new" component={PageNew} />
         <Route exact path= "/user/:uid/website/:wid/page/:pid" component={PageEdit} />
         <Route exact path= "/user/:uid/website/:wid/page/:pid/widget" component={WidgetList} />
