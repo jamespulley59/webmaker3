@@ -49,6 +49,7 @@ export default class Profile extends Component {
     }
         
     render() {
+        const {username, email, firstName, lastName} = this.state;
     return(
 <div>          
     <nav className="navbar navbar-dark bg-primary fixed-top " to='/user/:uid'>
@@ -68,7 +69,7 @@ export default class Profile extends Component {
                     type="text"
                     id="username"
                     name="username"
-                    value={'username'}
+                    value={username}
                     onChange={this.onChange} />               
             </div>
             <div className="form-group">
@@ -79,7 +80,7 @@ export default class Profile extends Component {
                     className="form-control"
                     id="email"
                     name="email"
-                    value={'email'}
+                    value={email}
                     onChange={this.onChange} />                
             </div>
             <div className="form-group">
@@ -90,7 +91,7 @@ export default class Profile extends Component {
                     type="text"
                     id="firstName"
                     name="firstName"
-                    value={'firstName'}
+                    value={firstName}
                     onChange={this.onChange} />               
             </div>
             <div className="form-group">
@@ -101,7 +102,7 @@ export default class Profile extends Component {
                     className="form-control"
                     id="lastName"
                     name="lastName"
-                    value={'lastName'}
+                    value={lastName}
                     onChange={this.onChange} />               
             </div>            
             <Link className="btn btn-primary btn-block"
@@ -110,10 +111,10 @@ export default class Profile extends Component {
     </form>                               
  </div>     
     <nav className="navbar navbar-dark bg-primary fixed-bottom">
-            <Link to="/user/123">
-                <i className="fas fa-user" />
-            </Link>
-        </nav>          
+        <Link to="/user/123">                
+            <i className="fas fa-user" />
+        </Link>
+    </nav>          
 </div>        
     )              
 }  

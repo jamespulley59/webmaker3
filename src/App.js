@@ -184,16 +184,18 @@ deleteWidget = (wgid) => {
 
   render() {
     return (
-<<<<<<< HEAD
     <Router>
-      <Switch> 
+      <Switch>
+        {/* user pages  */}
         <Route exact path="/" render = { props => (<Login {...props} users={this.state.users}/>)} />
         <Route exact path="/login" render= { props => (<Login {...props} users={this.state.users} />)} />
         <Route exact path="/register" render= { props => (<Register {...props} users={this.state.users} addUser={this.addUser}/>)}/>
         <Route exact path="/user/:uid" render= { props => (<Profile {...props} users={this.state.users} updateUser={this.updateUser}/>)}/>
+        {/* website pages */}
         <Route exact path="/user/:uid/website" render= { props => (<WebsiteList {...props} websites={this.state.websites}/>)} />
         <Route exact path="/user/:uid/website/new" render={ props => (<WebsiteNew {...props} websites={this.state.websites} addWeb={this.addWeb}/>)} />
         <Route exact path="/user/:uid/website/:wid" render={ props => (<WebsiteEdit {...props} websites={this.state.websites} deleteWeb={this.deleteWeb} editWeb={this.editWeb}/>)} />
+        {/* page pages */}
         <Route exact path="/user/:uid/website/:wid/page" render={ props => (<PageList {...props} pages={this.state.pages} />)} />
         <Route exact path="/user/:uid/website/:wid/page/new" render={ props => (<PageNew {...props} pages={this.state.pages} addPage={this.addPage} />)} />
         <Route exact path="/user/:uid/website/:wid/page/:pid" render={ props => (<PageEdit {...props} pages={this.state.pages} editPage={this.editPage} deletePage={this.deletePage} />)} />
@@ -204,26 +206,6 @@ deleteWidget = (wgid) => {
 </Router>
         );
     }
-=======
-    <Router className="app">
-      <Switch>
-        <Route exact path= "/" render={props => (<Login {...props} users={this.state.users} />)} />
-        <Route exact path= "/login" render={props => (<Login {...props} users={this.state.users} />)} />
-        <Route exact path= "/register" render={props => (<Register {...props} users={this.state.users} addUser={this.addUser} />)} />    
-        <Route exact path= "/user/:uid" render={props => (<Profile {...props} users={this.state.users} />)} />        
-        <Route exact path= "/user/:uid/website" render={props => (<WebsiteList {...props} users={this.state.users} />)} />
-        <Route exact path= "/user/:uid/website/new" component={WebsiteNew} />
-        <Route exact path= "/user/:uid/website/:wid" component={WebsiteEdit} />
-        <Route exact path= "/user/:uid/website/:wid/page" render={ props => (PageList {...props} pages={this.state.page})} />
-        <Route exact path= "/user/:uid/website/:wid/page/new" component={PageNew} />
-        <Route exact path= "/user/:uid/website/:wid/page/:pid" component={PageEdit} />
-        <Route exact path= "/user/:uid/website/:wid/page/:pid/widget" component={WidgetList} />
-        <Route exact path= "/user/:uid/website/:wid/page/:pid/widget/new" component={WidgetChooser} />        
-      </Switch>
-    </Router>
-    );
-  }    
->>>>>>> 2251b2ab55c188c1a9dd3b44459aefc97cf43804
 }
 
 
