@@ -28,7 +28,7 @@ export default class Login extends Component {
         for(let item of this.props.users) {
            if(item.username === user.username && item.password === user.password) {
                this.props.history.push("/user/" + item._id)
-                return
+                return;
            }
         }
         alert('Username and password entered were not found');
@@ -46,18 +46,24 @@ export default class Login extends Component {
         <form onSubmit={this.onSubmit}>
             <div className='form-group'>
                 <label htmlFor='username'>Username</label>
-                <input placeholder='Type Username Here...' className='form-control' type='text' id='username' name='username' 
-                    value={this.state.username} onChange = {this.onChange} />      
+                <input
+                    placeholder='Type Username Here...' 
+                    className='form-control' 
+                    type='text' 
+                    id='username' 
+                    name='username' 
+                    value={this.state.username}
+                    onChange = {this.onChange} />      
             </div>
             <div className='form-group'>
                 <label htmlFor='password'>Password</label>
                 <input placeholder='Type Password Here...' type='text' className='form-control' id='password' name='password'
                     value={this.state.password} onChange = {this.onChange} />
             </div>
-                <button className='btn btn-success btn-block' onClick={this.profile}>Login</button>
-                <button className='btn btn-primary btn-block' onClick={this.register}>Register</button>
+                <button className='btn btn-success btn-block'>Login</button>
+                <Link className='btn btn-primary btn-block' to= '/register'>Register</Link>
         </form>
     </div>
-        )
+        );
     }
 }

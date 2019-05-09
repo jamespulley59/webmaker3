@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import uuid from "uuid";
+
 export default class Register extends Component {
 
     state = {
@@ -22,16 +23,19 @@ export default class Register extends Component {
     }
 
     register(username, password, password2) {
+        // if passwords don't match
         if(password !== password2) {
-            alert('The passwords do not match. Please enter again')
+            alert('The passwords do not match. Please enter again');
             return;
         }
+        // if username is already taken
         for(let user of this.props.users) {
-            if(user.username === username)
-                alert('That username is taken. Please try another')
+            if(user.username === username){
+                alert('That username is taken. Please a new username.')
                 return;
-                    
-        // ............... _id: (parseInt(this.props.users[this.props.users.length -1]._id) + 1)
+            }
+        }
+        //  adding new user into data-base/array
         const newUser = {
             _id: uuid(),
             username,
@@ -39,18 +43,17 @@ export default class Register extends Component {
             email: "",
             firstName: "",
             lastName: ""
-
-        };
-        
-        this.props.addUser(newUser);
-    
-    
+        };        
+        this.props.addUser(newUser);    
+    // navigate to profile page
     this.props.history.push(`/user/${newUser._id}`);
     }
-    render() {
+
+    render() { 
         const {username, password, password2} = this.state
-        return(
-        <div>
+        return (
+        <div className='container'>
+            {/* <h1>Register</h1> */}
             <nav className="navbar navbar-dark bg-primary fixed-top ">
                 <span></span>
                 <span className='navbar-brand mb-0 h1'>Register</span>
@@ -61,10 +64,11 @@ export default class Register extends Component {
                 <label htmlFor='username'>Username</label>
                 <input 
                 placeholder='Type Username Here' 
-                className='form-control' 
+                id='username'
+                name='username'
                 type='text' 
-                id='username' 
-                name='username' 
+                className='form-control' 
+                value = {username}               
                 onChange={this.onChange} />
             </div>
             <div className='form-group'>
@@ -74,7 +78,8 @@ export default class Register extends Component {
                 className='form-control' 
                 type='password' 
                 id='password' 
-                name='password' 
+                name='password'
+                value = {password} 
                 onChange={this.onChange} />
             </div>
             <div className='form-group'>
@@ -84,21 +89,14 @@ export default class Register extends Component {
                 className='form-control' 
                 type='password'
                 id='password2' 
-                name='password2' 
+                name='password2'
+                value = {password2} 
                 onChange={this.onChange} />
             </div>
-            <button className='btn btn-success btn-block' to='/profile/'>Register</button>
-            <Link to="/login/" className='btn btn-danger btn-block'>Cancel</Link>
-        </form>    
-            <div>
-                <nav className="navbar navbar-dark bg-primary fixed-bottom">
-                    <span></span>
-                    <span></span>           
-                    <Link to='/user/:uid'><i className='fas fa-user'></i></Link>
-                    
-                </nav>
-            </div> 
+            <button className='btn btn-primary btn-block'>Register</button>
+            <Link  className='btn btn-danger btn-block' to="/login">Cancel</Link>
+        </form>   
         </div>
-        )
+        );
     }
-}  
+}
