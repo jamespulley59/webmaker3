@@ -1,61 +1,57 @@
 import React, { Component } from 'react'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.css';
-
+// user pages
 import Login from './components/user/Login';
 import Profile from './components/user/Profile';
 import Register from './components/user/Register';
+// website pages
 import WebsiteList from './components/website/WebsiteList';
 import WebsiteNew from './components/website/WebsiteNew';
 import WebsiteEdit from './components/website/WebsiteEdit';
+//age pages
 import PageList from './components/page/PageList';
 import PageNew from './components/page/PageNew';
 import PageEdit from './components/page/PageEdit';
+//widget pages
 import WidgetList from './components/widget/WidgetList';
 import WidgetChooser from './components/widget/WidgetChooser';
-// import WidgetEdit from './components/widget/WidgetEdit';
+import WidgetEdit from './components/widget/WidgetEdit';
+
 export default class App extends Component {
 
-  addUser = (user) => {
-    const newUsers = this.state.users;
-    newUsers.push(user);
-    this.setState({
-      users: newUsers
-    })
-  } 
+state = {
+  users: [
+    {_id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder", email: "alice@gmail.com"},
+    {_id: "234", username: "bob", password: "bob", firstName: "Bob", lastName: "Marley", email: "bob@whatever.com"},
+    {_id: "345", username: "charly", password: "charly", firstName: "Charly", lastName: "Garcia", email: "charly@ulem.com"},
+    {_id: "456", username: "shiyu", password: "shiyu", firstName: "Shiyu", lastName: "Wang", email: "swang@ulem.org"}
+  ],
 
-  state = {
-    users: [
-      {_id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder", email: "alice@gmail.com"},
-      {_id: "234", username: "bob", password: "bob", firstName: "Bob", lastName: "Marley", email: "bob@whatever.com"},
-      {_id: "345", username: "charly", password: "charly", firstName: "Charly", lastName: "Garcia", email: "charly@ulem.com"},
-      {_id: "456", username: "shiyu", password: "shiyu", firstName: "Shiyu", lastName: "Wang", email: "swang@ulem.org"}
-    ],
-  
-    websites: [
-      { _id: "123", name: "Facebook", developerId: "456", description: "Lorem" },
-      { _id: "234", name: "Tweeter",  developerId: "456", description: "Lorem" },
-      { _id: "456", name: "Gizmodo",   developerId: "456", description: "Lorem" },
-      { _id: "890", name: "Go", developerId: "123", description: "Lorem" },
-      { _id: "567", name: "Tic Tac Toe", developerId: "123", description: "Lorem" },
-      { _id: "678", name: "Checkers", developerId: "123", description: "Lorem" },
-      { _id: "789", name: "Chess", developerId: "234", description: "Lorem" }    
-    ],
-  
-    pages: [
-      { _id: "321", name: "Post 1", websiteId: "456", title: "Lorem" },
-      { _id: "432", name: "Post 2", websiteId: "456", title: "Lorem" },
-      { _id: "543", name: "Post 3", websiteId: "456", title: "Lorem" }  
-    ],  
-  
-    widgets: [
-      { _id: "123", widgetType: "HEADING", pageId: "321", size: 2, text: "GIZMODO"},
-      { _id: "234", widgetType: "HEADING", pageId: "321", size: 4, text: "Lorem ipsum"},
-      { _id: "345", widgetType: "IMAGE", pageId: "321", width: "100%", url: "https://www.gettyimages.ie/gi-resources/images/            Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg"},
-      { _id: "567", widgetType: "HEADING", pageId: "321", size: 4, text: "Lorem ipsum"},
-      { _id: "678", widgetType: "YOUTUBE", pageId: "321", width: "100%", url: "https://youtu.be/AM2Ivdi9c4E" }
-    ]
-  }
+  websites: [
+    { _id: "123", name: "Facebook", developerId: "456", description: "Lorem" },
+    { _id: "234", name: "Tweeter",  developerId: "456", description: "Lorem" },
+    { _id: "456", name: "Gizmodo",   developerId: "456", description: "Lorem" },
+    { _id: "890", name: "Go", developerId: "123", description: "Lorem" },
+    { _id: "567", name: "Tic Tac Toe", developerId: "123", description: "Lorem" },
+    { _id: "678", name: "Checkers", developerId: "123", description: "Lorem" },
+    { _id: "789", name: "Chess", developerId: "234", description: "Lorem" }    
+  ],
+
+  pages: [
+    { _id: "321", name: "Post 1", websiteId: "456", title: "Lorem" },
+    { _id: "432", name: "Post 2", websiteId: "456", title: "Lorem" },
+    { _id: "543", name: "Post 3", websiteId: "456", title: "Lorem" }  
+  ],  
+
+  widgets: [
+    { _id: "123", widgetType: "HEADING", pageId: "321", size: 2, text: "GIZMODO"},
+    { _id: "234", widgetType: "HEADING", pageId: "321", size: 4, text: "Lorem ipsum"},
+    { _id: "345", widgetType: "IMAGE", pageId: "321", width: "100%", url: "https://www.gettyimages.ie/gi-resources/images/            Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg"},
+    { _id: "567", widgetType: "HEADING", pageId: "321", size: 4, text: "Lorem ipsum"},
+    { _id: "678", widgetType: "YOUTUBE", pageId: "321", width: "100%", url: "https://youtu.be/AM2Ivdi9c4E" }
+  ]
+}
   addUser = (user) => {
     const newUsers = this.state.users;
     newUsers.push(user);
@@ -186,7 +182,7 @@ deleteWidget = (wgid) => {
     return (
     <Router>
       <Switch>
-        {/* user pages  */}
+        {/* user pages */}
         <Route exact path="/" render = { props => (<Login {...props} users={this.state.users}/>)} />
         <Route exact path="/login" render= { props => (<Login {...props} users={this.state.users} />)} />
         <Route exact path="/register" render= { props => (<Register {...props} users={this.state.users} addUser={this.addUser}/>)}/>
@@ -199,9 +195,10 @@ deleteWidget = (wgid) => {
         <Route exact path="/user/:uid/website/:wid/page" render={ props => (<PageList {...props} pages={this.state.pages} />)} />
         <Route exact path="/user/:uid/website/:wid/page/new" render={ props => (<PageNew {...props} pages={this.state.pages} addPage={this.addPage} />)} />
         <Route exact path="/user/:uid/website/:wid/page/:pid" render={ props => (<PageEdit {...props} pages={this.state.pages} editPage={this.editPage} deletePage={this.deletePage} />)} />
+        {/* widget pages */}
         <Route exact path="/user/:uid/website/:wid/page/:pid/widget" render={ props=>(<WidgetList {...props} widgets={this.state.widgets} />)} />
         <Route exact path="/user/:uid/website/:wid/page/:pid/widget/new" render={props=>(<WidgetChooser {...props} addWidget={this.addWidget} />)} />
-        {/* <Route exact path="/user/:uid/website/:wid/page/:pid/widget/:wgid" render={ props=>(<WidgetEdit {...props} widgets={this.state.widgets} editWidget={this.editWidget} deleteWidget={this.deleteWidget} />)} /> */}
+        <Route exact path="/user/:uid/website/:wid/page/:pid/widget/:wgid" render={ props=>(<WidgetEdit {...props} widgets={this.state.widgets} editWidget={this.editWidget} deleteWidget={this.deleteWidget} />)} /> 
     </Switch>
 </Router>
         );

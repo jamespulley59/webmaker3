@@ -45,6 +45,8 @@ onSubmit = e => {
 
 
   render() {
+    const { uid } = this.state;
+
     return (
 <div>
     <nav className="navbar navbar-light bg-primary fixed-top row nav-height">

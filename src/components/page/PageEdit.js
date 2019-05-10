@@ -62,36 +62,69 @@ export default class PageEdit extends Component {
     const {uid, wid, name, title} = this.state 
     return (
 <div>
-<nav className="navbar navbar-dark bg-primary fixed-top">
-    <Link className="color-black" to={`/user/${uid}/website/${wid}/page`}> 
-        <i className="fas fa-chevron-left"></i>
-    </Link>
-        <span className="navbar-brand mb-0 h1">Edit Page</span>
-    <Link to='/user/:uid/website/:wid/page'>
-        <i className="fas fa-check"></i>
-    </Link>
-</nav>
-<section className='container'>
-<ul className='list-group'>
-    <li className='list-group-item'>
-        <Link to='/user/:uid/website/:wid/page'>Name</Link>
-        <Link className='float-center' placeholder='Type Name Here' to='/user/:uid/website/:wid/page/:pid'>123123</Link>  
-    </li>       
-    <li className='list-group-item'>            
-        <Link className='float-center' to='/user/:uid/website/:wid/page/:pid'>`12`12</Link>
-        <Link to='/user/:uid/website/:wid/page'>Page Title</Link>
-    </li>
-        <Link to="/user/:uid/website" className="btn btn-danger btn-block">Delete</Link>      
-</ul> 
-</section>
-<nav className="navbar navbar-dark bg-primary fixed-bottom">
-    <div className='full-width'>
-        <Link to='/user/:uid'>
-            <i className='float-right fas fa-user'></i>
+    <nav className='navbar navbar-light fixed-top bg-light'>
+        <Link className='color-black' to={`/user/${uid}/website/${wid}/page`}> 
+            <i className='fas fa-chevron-left'></i>
         </Link>
-    </div>
-</nav>  
-</div>
-    )
-  }
-}
+            <span className='navbar-brand'>Edit Page</span>
+        <button className='color-black btn' form='editPageForm'>
+            <i className='fas fa-check' />
+        </button>          
+    </nav>                
+                    
+    <div className='container'>            
+        <form id='editPageForm' onSubmit={this.onSubmit}>
+            <div className='form-group'>
+                <label htmlFor='name'>
+                    <b>Name</b>
+                </label>
+                <input
+                    className='form-control'
+                    id='name'
+                    name='name'
+                    onChange={this.onChange} 
+                    type='text'
+                    placeholder='Name of the page...'
+                    value={name}/>
+            </div>
+            <div className='form-group'>
+                <label htmlFor='title'>
+                    <b>Title</b>
+                </label>
+                <input
+                    className='form-control'
+                    type='text'
+                    id='title'
+                    name='title'
+                    onChange={this.onChange}
+                    placeholder='Title of the page...'
+                    value={title}/>
+            </div>  
+                <Link to={`/user/${uid}/website/${wid}/page`} className="btn btn-lg btn-warning">Cancel</Link>
+                    <button
+                        type="button"
+                        onClick={this.onDelete}
+                        className="btn btn-lg btn-danger float-right">                                
+                        Delete
+                    </button>               
+        </form>                        
+    </div>                            
+                           
+    <footer className="navbar navbar-light fixed-bottom bg-light">
+        <div className="full-width">
+            <Link
+                className="color-black float-right"to={`/user/${uid}`}>                           
+                    <i className="fas fa-user" />
+            </Link>
+        </div>
+    </footer>                    
+</div>    
+       );                   
+    }                    
+}                        
+
+                
+            
+   
+    
+     

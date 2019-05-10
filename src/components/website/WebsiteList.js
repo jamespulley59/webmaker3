@@ -36,13 +36,13 @@ return (
         </nav>
         <section className='container'>
             <ul className='list-group'> 
-                {this.state.websites.map((website) => (                        
-                            <li key={website._id} className='list-group-item'>
-                                <Link to={`/user/${uid}/website/${website._id}/page`}>{website.name}</Link>
-                                <Link to={`/user/${uid}/website/${website._id}`} className='float-right'>
-                                    <i className='fas fa-cog'></i>
-                                </Link>
-                            </li>
+                {this.state.websites.map((website) => (
+                    <li key={website._id}className='list-group-item'>             
+                        <Link to={`/user/${uid}/website/${website._id}/page`}>{website.name}</Link>
+                        <Link to={`/user/${uid}/website/${website._id}`} className='float-right'>
+                            <i className='fas fa-cog'></i>
+                        </Link>
+                    </li>                    
                         )
                     )
                 }                

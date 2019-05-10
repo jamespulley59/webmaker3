@@ -37,7 +37,7 @@ export default class WebsiteEdit extends Component {
                 currentWeb = website;
                 break;
             }
-        }
+        };
         this.setState({
             name: currentWeb.name,
             description: currentWeb.description
@@ -76,7 +76,7 @@ return (
                 </Link>
                 <span className=''>Websites</span>
                 <Link className='float-right' to='/user/:uid/website/:wid/page/newl'>
-                    <i className='far fa-plus-square' />
+                    <i className='fas fa-plus-square' />
                 </Link>
             </div>
 
@@ -86,7 +86,7 @@ return (
                 </Link>
                     <span className=''>Edit Website</span>
                 <Link className='float-righ' to='/user/:uid/website'>
-                    <i className='far fa-check-circle' />
+                    <i className='fas fa-check-circle' />
                 </Link>
             </div>
         </nav>
@@ -96,31 +96,20 @@ return (
                 <div className='container-fluid'>
                     <ul className='list-group'>
                         {this.state.websites.map(website => (
-                            <li
-                                key={website._id}
-                                className='list-group-item'
-                            >
-                                <Link
-                                    to={`/user/${uid}/website/${
-                                        website._id
-                                    }/page`}
-                                >
-                                    {website.name}
-                                </Link>
-                                <Link
-                                    to={`/user/${uid}/website/${
-                                        website._id
-                                    }`}
-                                    className='float-right'
-                                >
-                                    <i className='fas fa-cog' />
-                                </Link>
-                            </li>
+                        <li key={website._id} className='list-group-item'>
+                            <Link to={`/user/${uid}/website/${website._id}/page`}> 
+                                {website.name} 
+                            </Link>
+                            <Link
+                                to={`/user/${uid}/website/${website._id}`} className='float-right'>
+                                    <i className='fas fa-cog'></i>
+                            </Link>     
+                        </li>             
                         ))}
                     </ul>
                 </div>
-            </div>
-
+            </div>        
+                            
             <div className='col-sm-8'>
                 <div className='container-fluid'>
                     <form id='editWebForm' onSubmit={this.onSubmit}>
@@ -135,8 +124,7 @@ return (
                                     placeholder='Name of this Website'
                                     value={this.state.name}
                                     onChange={this.onChange}/>
-                         </div>    
-                        
+                         </div>                       
                         
                         <div className='form-group'>
                             <label htmlFor='description'>
@@ -178,7 +166,14 @@ return (
     </div>
         );
     }
-}         
+}                            
+                                    
+                                
+                                
+                           
+                        
+
+            
                     
 
                
