@@ -79,9 +79,8 @@ onSubmit = e => {
                         <li key={website._id} className='list-group-item'>
                             <Link to={`/user/${uid}/website/${website._id}/page`}>
                             {website.name}                          </Link>    
-                            <Link className='float-right' 
-                                to={`/user/${uid}/website/${website._id}`}>        
-                                   <i className='fas fa-cog' />    
+                            <Link className='float-right' to={`/user/${uid}/website/${website._id}`}> 
+                                <i className='fas fa-cog' />   
                             </Link>                   
                         </li>                      
                     ))} 
