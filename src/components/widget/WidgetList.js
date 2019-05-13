@@ -35,12 +35,12 @@ export default class WidgetList extends Component {
     return(
 <div>
     <nav className="navbar fixed-top navbar-light bg-light">
-        <Link className = 'color-black' to={`/user/${uid}/website/${uid}/page/`}>
+        <Link className = 'color-black' to={`/user/${uid}/website/${wid}/page/`}>
             <i className="fa fa-chevron-left"></i>
         </Link>
-            <span className ='navbar-brand'>Welcome</span>
+            <span className ='navbar-brand'>Widgets</span>
         <Link className='color-black' to={`/user/${uid}/website/${wid}/page/${pid}/widget/new`}>
-            <i class ='fas fa-plus' />
+            <i className ='fas fa-plus' />
         </Link>
     </nav>
 
@@ -51,7 +51,7 @@ export default class WidgetList extends Component {
                     switch(widget.widgetType){
                        case 'HEADING':
                         return(
-                            <div>
+                            <div key={widget._id} >
                                 <div className='absolute-right'>
                                     <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget/${widget.id}`}>
                                         <i className='fas fa-cog'></i>
@@ -61,94 +61,75 @@ export default class WidgetList extends Component {
                                     </span>
                                 </div>
                                     <div>
-                                    {widget.size === 1 && <h1>{widget.text}</h1>}                                    
-                                    {widget.size === 2 && <h2>{widget.text}</h2>}
-                                    {widget.size === 3 && <h3>{widget.text}</h3>}
-                                    {widget.size === 4 && <h4>{widget.text}</h4>}
-                                    {widget.size === 5 && <h5>{widget.text}</h5>}
-                                    {widget.size === 6 && <h6>{widget.text}</h6>}
-                                    </div>                                        
+                                        {widget.size === 1 && <h1>{widget.text}</h1>}                                    
+                                        {widget.size === 2 && <h2>{widget.text}</h2>}
+                                        {widget.size === 3 && <h3>{widget.text}</h3>}
+                                        {widget.size === 4 && <h4>{widget.text}</h4>}
+                                        {widget.size === 5 && <h5>{widget.text}</h5>}
+                                        {widget.size === 6 && <h6>{widget.text}</h6>}
+                                    </div>         
                             </div>
                         )
                        case 'IMAGE':
-                       return (
-                    <div>       
-                        <div key = {widget.id}>
+                       return (       
+                        <div key = {widget._id}>
                             <div className='absolute-right'>
-                                <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget/${widget.id}`}>
+                                <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget/${widget._id}`}>
                                     <i className='fas fa-cog'></i>   
                                 </Link>
                                 <span>
                                     <i className='fas fa-bars'></i>
                                 </span>
                             </div>                                
-                        </div>
-                        <div>
-                            <div className='img-fluid'>
-                                <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget/${widget.id}`}>
-                                    <i className='fas fa-cog'></i>
-                                </Link>
-                                <span>
-                                    <i className='fas fa-bars'></i>
-                                </span>
+                            <div>
+                                <img className='img-fluid'
+                                    src = {widget.url} 
+                                    alt = '' 
+                                    width = {widget.width}>
+                                </img>
                             </div>
-                            <img className='image-fluid' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEOXgCbLu2SaFSa0R3JEM6gvThyccEG4zILYog_G-1Mkb89XRDHg' alt='msimbo' />
-                        </div>                                
-                    </div>
-                       )
-                       case 'YOUTUBE': 
+                        </div>
+                )                             
+                       case 'YOUTUBE':
+                        return(   
+                            <div key = {widget._id}>
+                                    <div className='absolute-right'>
+                                    <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget/${widget._id}`}>
+                                        <i className='fas fa-cog'></i>   
+                                    </Link>
+                                    <span>
+                                        <i className='fas fa-bars'></i>
+                                    </span>
+                                </div>
+                                <div className='embed-responsive embed-responsive-16by9'>           
+                                    <iframe src={widget.url}
+                                            title= {widget._id} 
+                                            frameBorder="0" 
+                                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                                            allowFullScreen>
+                                    </iframe>
+                                </div>
+                                <div>
+                                    <div className='icon-right'>
+                                        <Link to='#'>
+                                            <i className='fas fa-cog'></i>
+                                            <i className='fas fa-bars'></i>
+                                        </Link>
+                                    </div>
+                                        <h5>zvlo;iv;ozsif;zadfi;bvzib z;ibj;fipbz'odfjb'pojpb'zojb 'zopjb' obj zxopjbf'o'ob kgkvygklgkli
+                                            DSAbgfsznhxdffhymmnjcdmcxmmcxnmxcmgillugh                          
+                                        </h5>
+                                </div>                        
+                            </div>           
+                        )
+                        default:
+                            return <div></div>;
                     }
                 }
             )
 
         }
     </div>
-        {/* <div> 
-            
-        
-        <div>
-            <div className='icon-right'>
-                <Link to='#'>
-                    <i className='fas fa-cog'></i>
-                    <i className='fas fa-bars'></i>
-                </Link>
-            </div>
-            <p>zvlo;iv;ozsif;zadfi;bvzib z;ibj;fipbz'odfjb'pojpb'zojb 'zopjb' obj zxopjbf'o'ob kgkvygklgkli
-                DSAbgfsznhxdffhymmnjcdmcxmmcxnmxcmgillugh</p>                           
-        </div>
-        <div>
-            <div className='icon-right'>
-                <Link to='#'>
-                    <i className='fas fa-cog'></i>
-                    <i className='fas fa-bars'></i>
-                </Link>
-            </div>
-             <h3>gjkhugjhuygklyugkligyilgyiguhylo9hyuihluigh
-                 kljlloihhuliuuilughiluglghilugiuilg</h3>                         
-        </div>
-        <div>
-            <div className='icon-right'>
-                <Link to='#'>
-                    <i className='fas fa-cog'></i>
-                    <i className='fas fa-bars'></i>
-                </Link>
-            </div>
-            <div className='embed-responsive embed-responsive-16by9'>           
-            <iframe title="roses" src="https://www.youtube.com/embed/I7pWhXv4ZVE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div>
-                <div className='icon-right'>
-                    <Link to='#'>
-                        <i className='fas fa-cog'></i>
-                        <i className='fas fa-bars'></i>
-                    </Link>
-                </div>
-                    <h5>zvlo;iv;ozsif;zadfi;bvzib z;ibj;fipbz'odfjb'pojpb'zojb 'zopjb' obj zxopjbf'o'ob kgkvygklgkli
-                        DSAbgfsznhxdffhymmnjcdmcxmmcxnmxcmgillugh                          
-                    </h5>
-            </div>    
-        </div>
-    </div>*/}
 
         <footer className='navbar navbar-light fixed-bottom bg-dark'>
                 <div className='full-width'>
@@ -157,7 +138,6 @@ export default class WidgetList extends Component {
                     </Link>
                 </div>          
         </footer>
-
      
 </div>        
         )

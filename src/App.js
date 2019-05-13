@@ -47,9 +47,9 @@ state = {
   widgets: [
     { _id: "123", widgetType: "HEADING", pageId: "321", size: 2, text: "GIZMODO"},
     { _id: "234", widgetType: "HEADING", pageId: "321", size: 4, text: "Lorem ipsum"},
-    { _id: "345", widgetType: "IMAGE", pageId: "321", width: "100%", url: "https://www.gettyimages.ie/gi-resources/images/            Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg"},
+    { _id: "345", widgetType: "IMAGE", pageId: "321", width: "20%", url:'https://www.istockphoto.com/resources/images/HomePage/Tiles/EN_US/iStock-IllustrationsWeLove-1137846595.jpg', alt: 'picture'},
     { _id: "567", widgetType: "HEADING", pageId: "321", size: 4, text: "Lorem ipsum"},
-    { _id: "678", widgetType: "YOUTUBE", pageId: "321", width: "100%", url: "https://youtu.be/AM2Ivdi9c4E" }
+    { _id: "678", widgetType: "YOUTUBE", pageId: "321", width: "100", url: "https://www.youtube.com/embed/I7pWhXv4ZVE", alt: "Outcast"},
   ]
 }
   addUser = (user) => {
