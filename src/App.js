@@ -18,7 +18,8 @@ import WidgetList from './components/widget/WidgetList';
 import WidgetChooser from './components/widget/WidgetChooser';
 import WidgetEdit from './components/widget/WidgetEdit';
 
-export default class App extends Component {
+
+class App extends Component {
 
 state = {
   users: [
@@ -73,10 +74,10 @@ state = {
           if(user._id === newUser._id) {
               if(user.username !== newUser.userName && 
                   this.userNameInUse(newUser.username)) {
-                  alert("This username is taken");
+                  alert("The username you selected is already in use.");
               } else {
                   user = newUser;
-                  alert("user information is updated");
+                  alert("Your user information has been updated");
               }
           }
           return user;
@@ -86,6 +87,7 @@ state = {
           users: newUsers
       })
     }
+
     addWeb = (newWeb) => {
       const newWebs = this.state.websites;
       newWebs.push(newWeb);
@@ -101,6 +103,7 @@ state = {
           )
       })
   }
+
   editWeb = (wid, name, description) => {
     this.setState({
         websites: this.state.websites.map(
@@ -114,6 +117,7 @@ state = {
         )
     })
 }
+
 addPage = newPage => {
   const newPages = this.state.pages;
   newPages.push(newPage);
@@ -135,6 +139,7 @@ editPage = newPage => {
       pages: newPages
   })
 }
+
 deletePage = pid => {
   const newPages = this.state.pages.filter(
       (page) => (
@@ -145,8 +150,8 @@ deletePage = pid => {
       pages: newPages
   })
 }
-editWidget = newWidget => {
-        
+
+editWidget = newWidget => {  
   const newWidgets = this.state.widgets.map(
       (widget) => {
           if(widget._id === newWidget._id) {
@@ -159,6 +164,7 @@ editWidget = newWidget => {
       widgets: newWidgets
   })
 }
+
 addWidget = newWidget => {
   const newWidgets = this.state.widgets;
   newWidgets.push(newWidget);
@@ -178,8 +184,8 @@ deleteWidget = (wgid) => {
   })
 }
 
-  render() {
-    return (
+render() {
+  return (
     <Router>
       <Switch>
         {/* user pages */}
@@ -204,7 +210,7 @@ deleteWidget = (wgid) => {
         );
     }
 }
-
+export default App;
 
      
 

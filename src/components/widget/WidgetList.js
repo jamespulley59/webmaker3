@@ -108,18 +108,7 @@ export default class WidgetList extends Component {
                                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
                                             allowFullScreen>
                                     </iframe>
-                                </div>
-                                <div>
-                                    <div className='icon-right'>
-                                        <Link to='#'>
-                                            <i className='fas fa-cog'></i>
-                                            <i className='fas fa-bars'></i>
-                                        </Link>
-                                    </div>
-                                        <h5>zvlo;iv;ozsif;zadfi;bvzib z;ibj;fipbz'odfjb'pojpb'zojb 'zopjb' obj zxopjbf'o'ob kgkvygklgkli
-                                            DSAbgfsznhxdffhymmnjcdmcxmmcxnmxcmgillugh                          
-                                        </h5>
-                                </div>                        
+                                </div>                 
                             </div>           
                         )
                         default:

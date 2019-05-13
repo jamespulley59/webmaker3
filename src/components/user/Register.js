@@ -31,7 +31,7 @@ export default class Register extends Component {
         // if username is already taken
         for(let user of this.props.users) {
             if(user.username === username){
-                alert('That username is taken. Please a new username.')
+                alert('That username is in use. Please choose a new username.')
                 return;
             }
         }
