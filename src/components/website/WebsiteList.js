@@ -22,8 +22,11 @@ export default class WebsiteList extends Component {
     }
 
 render() {
+
     const {uid} = this.state
+
 return (
+
     <div>
         <nav className='navbar navbar-dark bg-primary fixed-top'>
             <Link to={`/user/${uid}`} >
@@ -34,6 +37,7 @@ return (
                 <i className='fas fa-plus' />
             </Link>
         </nav>
+
         <section className='container'>
             <ul className='list-group'> 
                 {this.state.websites.map((website) => (
@@ -46,13 +50,15 @@ return (
                         )
                     )
                 }                
-            </ul>
+            </ul>            
         </section>
+
             <nav className='navbar navbar-dark bg-primary fixed-bottom'>
                 <Link to={`/user/${uid}`}>
                     <i className='fas fa-user' />
                 </Link>
             </nav>
+
     </div>
         );
     }

@@ -93,8 +93,10 @@ export default class Register extends Component {
                 value = {password2} 
                 onChange={this.onChange} />
             </div>
-            <button className='btn btn-primary btn-block'>Register</button>
-            <Link  className='btn btn-danger btn-block' to="/login">Cancel</Link>
+            <button className='btn btn-primary btn-block'>Register
+            </button>
+            <Link  className='btn btn-danger btn-block' to={`/login`}>Cancel
+            </Link>
         </form>   
         </div>
         );

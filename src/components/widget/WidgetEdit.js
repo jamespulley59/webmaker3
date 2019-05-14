@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import WidgetHeading from './WidgetHeading';
-import WidgetImage from "./WidgetImage";
-import WidgetYoutube from "./WidgetYoutube";
+import WidgetImage from './WidgetImage';
+import WidgetYoutube from './WidgetYoutube';
 // import {Link} from 'react-router-dom';
 
 export default class WidgetEdit extends Component {
 
     state={
-        name: "",
-        text: "",
-        size: "",
-        WidgetType: "",
-        width: "",
-        url: "",
-        uid: "",
-        wid: "",
-        pid: ""
+        name: '',
+        text: '',
+        size: '',
+        WidgetType: '',
+        width: '',
+        url: '',
+        uid: '',
+        wid: '',
+        pid: ''
     }
 
     componentDidMount(){
@@ -36,7 +36,7 @@ export default class WidgetEdit extends Component {
             }
         }
         this.setState({
-            name: currentWidget.name? currentWidget.name: "",
+            name: currentWidget.name? currentWidget.name: '',
             text: currentWidget.text,
             size: currentWidget.size,
             widgetType: currentWidget.widgetType,
@@ -77,7 +77,7 @@ export default class WidgetEdit extends Component {
 
   render() {
     const {name, text, size, width, widgetType, url , uid, wid, pid} = this.state;
-    if(widgetType === "HEADING"){
+    if(widgetType === 'HEADING'){
         return (
             <WidgetHeading 
                 name={name}
@@ -88,10 +88,10 @@ export default class WidgetEdit extends Component {
                 pid={pid} 
                 onChange={this.onChange}
                 onSubmit={this.onSubmit}
-                onDelete={this.onDelete}
-            />
+                onDelete={this.onDelete}>
+            </WidgetHeading>
         );
-    } else if(widgetType==="IMAGE"){
+    } else if(widgetType==='IMAGE'){
         return (
             <WidgetImage 
                 name={name}
@@ -102,8 +102,8 @@ export default class WidgetEdit extends Component {
                 pid={pid} 
                 onChange={this.onChange}
                 onSubmit={this.onSubmit}
-                onDelete={this.onDelete}
-            />
+                onDelete={this.onDelete}>
+            </WidgetImage>
         );
     } else {
         return (
@@ -116,8 +116,8 @@ export default class WidgetEdit extends Component {
                 pid={pid} 
                 onChange={this.onChange}
                 onSubmit={this.onSubmit}
-                onDelete={this.onDelete}
-            />
+                onDelete={this.onDelete}>
+            </WidgetYoutube>           
         );
     }
 }

@@ -55,7 +55,7 @@ export default class Profile extends Component {
     <nav className="navbar navbar-dark bg-primary fixed-top " to='/user/:uid'>
         <span></span>
         <span className="navbar-brand mb-0 h1">Profile</span>
-        <button to='/user/:uid'>
+        <button to={`/user`}>
             <i className='fas fa-check'></i>
         </button>
     </nav>           
@@ -107,11 +107,11 @@ export default class Profile extends Component {
             </div>            
             <Link className="btn btn-primary btn-block"
                 to={`/user/${this.props.match.params.uid}/website`}>Websites</Link>                         
-            <Link to="/login" className="btn btn-danger btn-block">Logout</Link> 
+            <Link to={`/login`} className="btn btn-danger btn-block">Logout</Link> 
     </form>                               
  </div>     
     <nav className="navbar navbar-dark bg-primary fixed-bottom">
-        <Link to="/user/123">                
+        <Link to={`/user`}>                
             <i className="fas fa-user" />
         </Link>
     </nav>          

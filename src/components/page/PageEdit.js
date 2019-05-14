@@ -4,26 +4,26 @@ import {Link} from 'react-router-dom';
 export default class PageEdit extends Component {
 
     state = {
-        uid: "",
-        wid: "",
-        pid: "",
-        name: "",
-        title: ""
+        uid: '',
+        wid: '',
+        pid: '',
+        name: '',
+        title: ''
     }
 
-    async componentDidMount() {
+     async componentDidMount() {
         await this.setState({
             uid: this.props.match.params.uid,
             wid: this.props.match.params.wid,
             pid: this.props.match.params.pid
-        })
-
+        })   
         const page = this.getPage();
         this.setState({
             name: page.name,
             title: page.title
         })
-    } 
+    }
+        
     
     getPage = () => {
         for(let page of this.props.pages) {
@@ -59,8 +59,11 @@ export default class PageEdit extends Component {
     } 
 
   render() {
-    const {uid, wid, name, title} = this.state 
+
+    const {uid, wid, name, title} = this.state
+
     return (
+
 <div>
     <nav className='navbar navbar-light fixed-top bg-light'>
         <Link className='color-black' to={`/user/${uid}/website/${wid}/page`}> 
@@ -84,7 +87,7 @@ export default class PageEdit extends Component {
                     name='name'
                     onChange={this.onChange} 
                     type='text'
-                    placeholder='Name of the page...'
+                    placeholder='Type page name here...'
                     value={name}/>
             </div>
             <div className='form-group'>
@@ -97,24 +100,25 @@ export default class PageEdit extends Component {
                     id='title'
                     name='title'
                     onChange={this.onChange}
-                    placeholder='Title of the page...'
+                    placeholder='Type page title here.
+                    ...'
                     value={title}/>
             </div>  
-                <Link to={`/user/${uid}/website/${wid}/page`} className="btn btn-lg btn-warning">Cancel</Link>
+                <Link to={`/user/${uid}/website/${wid}/page`} className='btn btn-lg btn-warning'>Cancel</Link>
                     <button
-                        type="button"
+                        type='button'
                         onClick={this.onDelete}
-                        className="btn btn-lg btn-danger float-right">                                
+                        className='btn btn-lg btn-danger float-right'>                                
                         Delete
                     </button>               
         </form>                        
     </div>                            
                            
-    <footer className="navbar navbar-light fixed-bottom bg-light">
-        <div className="full-width">
+    <footer className='navbar navbar-light fixed-bottom bg-light'>
+        <div className='full-width'>
             <Link
-                className="color-black float-right"to={`/user/${uid}`}>                           
-                    <i className="fas fa-user" />
+                className='color-black float-right'to={`/user/${uid}`}>                           
+                    <i className='fas fa-user' />
             </Link>
         </div>
     </footer>                    

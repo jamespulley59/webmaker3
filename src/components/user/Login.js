@@ -61,7 +61,7 @@ export default class Login extends Component {
                     value={this.state.password} onChange = {this.onChange} />
             </div>
                 <button className='btn btn-success btn-block'>Login</button>
-                <Link className='btn btn-primary btn-block' to= '/register'>Register</Link>
+                <Link className='btn btn-primary btn-block' to= {`/register`}>Register</Link>
         </form>
     </div>
         );

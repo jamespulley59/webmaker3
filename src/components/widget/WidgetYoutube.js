@@ -1,15 +1,33 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+
 export default class WidgetYuotube extends Component {
-  render() {
+
+  onChange= e => {
+        this.props.onChange(e);
+    }
+
+    onSubmit= e => {
+        this.props.onSubmit(e)
+    }
+
+    onDelete = () => {
+        this.props.onDelete();
+    }
+
+    render() {
+
+        const {uid, wid, pid, name, url, width} = this.props
+
     return (
+        
 <div>
    <nav className='navbar navbar-light bg-light fixed-top'>
-        <Link to='/user/:uid/website/:wid/page/:pid/widget'>
+        <Link to={`/user/:${uid}/website/${wid}/page/${pid}/widget`}>
             <i className='fas fa-chevron-left'></i>
         </Link>
             <span className='navbar-brand mb-0 h1'>Widget Edit</span>
-        <Link to='/user/:uid/website/:wid/page/:pid/widget'>
+        <Link to={`/user/:${uid}/website/${wid}/page/${pid}/widget`}>
             <i className='fas fa-check'></i>
         </Link>
     </nav>
@@ -29,18 +47,18 @@ export default class WidgetYuotube extends Component {
             </div>
             <div className='form-group'>
                 <label htmlFor='width'>Width</label>
-                    <div className="input-group">
-                        <input type="number" className="form-control" placeholder="Image Width" />
-                            <div className="input-group-append">
-                                <span className="input-group-width">%</span>
+                    <div className='input-group'>
+                        <input type='number' className='form-control' placeholder='Image Width' />
+                            <div className='input-group-append'>
+                                <span className='input-group-width'>%</span>
                             </div>
                     </div>
             </div>          
-                <Link to='/user/:uid/website/:wid/page/:pid/widget' className='btn btn-danger btn-block'>Delete</Link>
+                <Link to={`/user/:${uid}/website/${wid}/page/${pid}/widget`} className='btn btn-danger btn-block'>Delete</Link>
         </form>
     </div>
     <nav className='navbar navbar-light bg-light fixed-bottom'>
-        <Link to='../user/profile.html'>
+        <Link to={`}../user/${uid}`}>
             <i className ='fas fa-user'></i>
         </Link>
     </nav> 

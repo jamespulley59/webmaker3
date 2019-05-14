@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 export default class PageList extends Component {
 
     state = {
+        pid: '',
         uid: '',
         wid: '',
         pages: []    
@@ -11,6 +12,7 @@ export default class PageList extends Component {
 
     async componentDidMount () {     
         await this.setState({
+            pid: this.props.match.params.pid,
             uid: this.props.match.params.uid,
             wid: this.props.match.params.wid
         })
@@ -29,8 +31,11 @@ export default class PageList extends Component {
     }
 
 render() {
-    const {uid, wid} = this.state;
+
+    const {uid, wid, pid} = this.state;
+
 return (
+
 <div>
     <nav className='navbar navbar-light fixed-top bg-light'>
         <Link className='color-black' to={`/user/${uid}/website`}>
@@ -47,51 +52,29 @@ return (
     <div className='container'>
         <ul className='list-group'>
             {
-                this.state.pages.map((page) => (                    
-                    <li key={page._id} className='list-group-item'>
-                        <Link to={`/user/${uid}/website/${wid}/page/${page._id}/widget`}>{page.name}</Link>
-                        <Link className='float-right' to={`/user/${uid}/website/${wid}/page/${page._id}`}>
-                            <i className='fas fa-cog' />
-                        </Link>
-                    </li>
+                this.state.pages.map((page) => ( 
+                    <div>                   
+                        <li key={page._id} className="list-group-item">
+                            <Link to={`/user/${uid}/website/${wid}/page/${page._id}/widget`}>{page.name}</Link>
+                            <Link className="float-right" to={`/user/${uid}/website/${wid}/page/${page._id}`}>
+                                <i className="fas fa-cog" />
+                            </Link>
+                        </li>
+                        <li key={page._id} className="list-group-item">
+                            <Link to={`/user/${uid}/website/${wid}/page/${page._id}/widget`}>{page.name}</Link>
+                            <Link className="float-right" to={`/user/${uid}/website/${wid}/page/${page._id}`}>
+                                <i className="fas fa-cog" />
+                            </Link>
+                        </li>
+                    </div>
                     )
                 )
             }
-            <li className='list-group-item'> 
-                <Link to='/user/:uid/website/:wid/page/:pid/widget'>Blog Post</Link>
-                <Link className="float-right" to='/user/:uid/website/:wid/page/:pid/'>
-                    <i className='fas fa-cog' />
+            <li className="list-group-item">
+                <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget`}>Blog Post</Link>
+                <Link className="float-right" href={`/user/${uid}/website/${wid}/page/${pid}/widget`}>
+                    <i className="fas fa-cog" />
                 </Link>
-            </li>
-            <li className='list-group-item'> 
-                <Link to='/user/:uid/website/:wid/page/:pid/widget'>Blogs</Link>
-                <Link className="float-right" to='/user/:uid/website/:wid/page/:pid/'>
-                    <i className='fas fa-cog' />
-                </Link>                
-            </li>
-            <li className='list-group-item'> 
-                <Link to='/user/:uid/website/:wid/page/:pid/widget'>Home</Link>
-                <Link className="float-right" to='/user/:uid/website/:wid/page/:pid/'>
-                    <i className='fas fa-cog' />
-                </Link>
-            </li>   
-            <li className='list-group-item'> 
-                <Link to='/user/:uid/website/:wid/page/:pid/widget'>About</Link>
-                <Link className="float-right" to='/user/:uid/website/:wid/page/:pid/'>
-                    <i className='fas fa-cog' />
-                </Link>                
-            </li>                
-            <li className='list-group-item'> 
-                <Link to='/user/:uid/website/:wid/page/:pid/widget'>Contact Us</Link>
-                <Link className="float-right" to='/user/:uid/website/:wid/page/:pid/'>
-                    <i className='fas fa-cog' />
-                </Link>                
-            </li>
-            <li className='list-group-item'> 
-                <Link to='/user/:uid/website/:wid/page/:pid/widget'>Blogs</Link>
-                <Link className="float-right" to='/user/:uid/website/:wid/page/:pid/'>
-                    <i className='fas fa-cog' />
-                </Link>                
             </li> 
         </ul>
     </div>
@@ -99,10 +82,11 @@ return (
     <footer className='navbar navbar-light fixed-bottom bg-light'>
         <div className='full-width'>
             <Link className='color-black float-right' to={`/user/${uid}`}>            
-                <i className="fas fa-user" />                
+                <i className='fas fa-user' />                
             </Link>
         </div>
-    </footer>            
+    </footer>
+                
 </div>          
         );
     }

@@ -16,8 +16,11 @@ export default class WidgetImage extends Component {
     }
 
 render() {
+
     const {uid, wid, pid, name, width, url} = this.props
+
 return (
+    
 <div>
     <nav className='navbar navbar-light bg-light fixed-top'>
         <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget`}>
@@ -30,58 +33,58 @@ return (
    </nav>
 
     <div className='container'>
-        <form id="imgForm" onSubmit={this.onSubmit}>
-            <div className="form-group">
-                <label htmlFor="name">
+        <form id='imgForm' onSubmit={this.onSubmit}>
+            <div className='form-group'>
+                <label htmlFor='name'>
                     <b>Name</b>
                 </label>
                 <input 
-                    type="text" 
-                    id="name" 
-                    name="name" 
+                    type='text' 
+                    id='name' 
+                    name='name' 
                     onChange={this.onChange}
                     value={name}
-                    className="form-control"/>                   
+                    className='form-control'/>                   
             </div>
-            <div className="form-group">
-                <label htmlFor="url">
+            <div className='form-group'>
+                <label htmlFor='url'>
                     <b>Url</b>
                 </label>
                 <input 
-                    type="text" 
-                    id="url" 
-                    className="form-control" 
-                    name="url"
+                    type='text' 
+                    id='url' 
+                    className='form-control' 
+                    name='url'
                     onChange={this.onChange}
                     value={url}/>                            
             </div>
-            <div className="form-group">
-                <label htmlFor="width">
+            <div className='form-group'>
+                <label htmlFor='width'>
                     <b>Width</b>
                 </label>
                 <input
-                    type="text"
-                    id="width"
-                    className="form-control"
-                    name="width"
+                    type='text'
+                    id='width'
+                    className='form-control'
+                    name='width'
                     value={width}
                     onChange={this.onChange}/>              
             </div>
             <button
-                type="button"
+                type='button'
                 onClick={this.onDelete}
-                className="btn btn-danger btn-block">      
+                className='btn btn-danger btn-block'>      
                 Delete
             </button>
         </form>
     </div>
 
-                <footer className="navbar navbar-light fixed-bottom bg-light">
-                    <div className="full-width">
+                <footer className='navbar navbar-light fixed-bottom bg-light'>
+                    <div className='full-width'>
                         <Link
-                            className="color-black float-right"
+                            className='color-black float-right'
                             to={`/user/${uid}`}>    
-                            <i className="fas fa-user" />
+                            <i className='fas fa-user' />
                         </Link>
                     </div>
                 </footer>

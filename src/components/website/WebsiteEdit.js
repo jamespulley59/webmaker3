@@ -66,7 +66,7 @@ export default class WebsiteEdit extends Component {
     };
 
 render() {
-    const { uid } = this.state;
+    const { uid, wid } = this.state;
 return (
     <div>
         <nav className='navbar navbar-light bg-primary fixed-top row'>
@@ -74,18 +74,18 @@ return (
                 <Link className='float-left' to={`/user/${uid}/website`}>
                     <i className='fas fa-arrow-circle-left' />
                 </Link>
-                <span className=''>Websites</span>
-                <Link className='float-right' to='/user/:uid/website/:wid/page/newl'>
+                    <span className=''>Websites</span>
+                <Link className='float-right' to={`/user/${uid}/website/${wid}/page`}>
                     <i className='fas fa-plus-square' />
                 </Link>
             </div>
 
             <div className='col-lg-8 text-center text-white'>
-                <Link className='d-lg-none float-left' to='/user/:uid/website'>
+                <Link className='d-lg-none float-left' to={`/user/${uid}/website`}>
                     <i className='fas fa-arrow-circle-left'/>
                 </Link>
                     <span className=''>Edit Website</span>
-                <Link className='float-righ' to='/user/:uid/website'>
+                <Link className='float-righ' to={`/user/${uid}/website`}>
                     <i className='fas fa-check-circle' />
                 </Link>
             </div>

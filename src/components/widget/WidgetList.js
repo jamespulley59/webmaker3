@@ -31,12 +31,15 @@ export default class WidgetList extends Component {
     }
 
     render() {
+
         const {uid, pid, wid, widgets} = this.state
+
     return(
+        
 <div>
-    <nav className="navbar fixed-top navbar-light bg-light">
+    <nav className='navbar fixed-top navbar-light bg-light'>
         <Link className = 'color-black' to={`/user/${uid}/website/${wid}/page/`}>
-            <i className="fa fa-chevron-left"></i>
+            <i className='fa fa-chevron-left'></i>
         </Link>
             <span className ='navbar-brand'>Widgets</span>
         <Link className='color-black' to={`/user/${uid}/website/${wid}/page/${pid}/widget/new`}>
@@ -104,8 +107,8 @@ export default class WidgetList extends Component {
                                 <div className='embed-responsive embed-responsive-16by9'>           
                                     <iframe src={widget.url}
                                             title= {widget._id} 
-                                            frameBorder="0" 
-                                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                                            frameBorder='0' 
+                                            allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' 
                                             allowFullScreen>
                                     </iframe>
                                 </div>                 

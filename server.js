@@ -1,4 +1,3 @@
-console.log('server is working')
 // require is a node js keyword like "import" in typescript
 
 // express library, create running server. can listen to incoming request
