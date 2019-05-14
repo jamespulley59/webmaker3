@@ -65,7 +65,7 @@ export default class WidgetChooser extends Component {
                         <li className='list-group-item'>
                             <span onClick={this.createWidget.bind(this, 'YOUTUBE')}>
                                 Youtube
-                            </span>
+                           </span>
                         </li>
                         <li className='list-group-item'>
                             <Link to='#'>Data Table</Link>
