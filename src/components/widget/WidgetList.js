@@ -56,7 +56,7 @@ export default class WidgetList extends Component {
                         return(
                             <div key={widget._id} >
                                 <div className='absolute-right'>
-                                    <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget/${widget.id}`}>
+                                    <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget/${widget._id}`}>
                                         <i className='fas fa-cog'></i>
                                     </Link>
                                     <span>

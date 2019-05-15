@@ -60,23 +60,12 @@ return (
                                 <i className='fas fa-cog' />
                             </Link>
                         </li>
-                        <li key={page._id} className='list-group-item'>
-                            <Link to={`/user/${uid}/website/${wid}/page/${page._id}/widget`}>{page.name}</Link>
-                            <Link className='float-right' to={`/user/${uid}/website/${wid}/page/${page._id}`}>
-                                <i className='fas fa-cog' />
-                            </Link>
-                        </li>
+                        
                     </div>
                     )
                 )
             }
-            <li className='list-group-item'>
-                <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget`}>Blog Post</Link>
-                <Link className='float-right' href={`/user/${uid}/website/${wid}/page/${pid}/widget`}>
-                    <i className='fas fa-cog'>
-                    </i>
-                </Link>
-            </li> 
+             
         </ul>
     </div>
 
