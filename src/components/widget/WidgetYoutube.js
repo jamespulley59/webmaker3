@@ -17,7 +17,7 @@ export default class WidgetYuotube extends Component {
 
     render() {
 
-        const {uid, wid, pid, name, url, width} = this.props
+        const {uid, wid, pid} = this.props
 
     return (
         

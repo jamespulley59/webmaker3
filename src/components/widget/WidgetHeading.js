@@ -38,37 +38,37 @@ export default class WidgetHeading extends Component {
                             <label htmlFor='name'>
                                 <b>Name</b>
                             </label>
-                            <input
-                                type='text'
-                                id='name'
-                                name='name'
-                                onChange={this.onChange}
-                                value={name}
-                                className='form-control'/>
+                            <input  type='text'
+                                    id='name'
+                                    name='name'
+                                    onChange={this.onChange}
+                                    value={name}
+                                    className='form-control'>                
+                            </input>
                         </div>
                         <div className='form-group'>
                             <label htmlFor='text'>
                                 <b>Text</b>
                             </label>
-                            <input
-                                type='text'
-                                id='text'
-                                name='text'
-                                onChange={this.onChange}
-                                value={text}
-                                className='form-control'/>                            
+                            <input  type='text'
+                                    id='text'
+                                    name='text'
+                                    onChange={this.onChange}
+                                    value={text}
+                                    className='form-control'>
+                            </input>                                       
                         </div>
                         <div className='form-group'>
                             <label htmlFor='size'>
                                 <b>Size</b>
                             </label>
-                            <input
-                                type='number'
-                                id='size'
-                                name='size'
-                                value={size}
-                                onChange={this.onChange}
-                                className='form-control'/>                            
+                            <input  type='number'
+                                    id='size'
+                                    name='size'
+                                    value={size}
+                                    onChange={this.onChange}
+                                    className='form-control'>
+                            </input>                                        
                         </div>
                         <button type='button' onClick={this.onDelete} className='btn btn-danger btn-block'>
                             Delete

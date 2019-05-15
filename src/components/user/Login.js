@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import Axios from 'axios';
 
 export default class Login extends Component {
 
@@ -22,6 +23,10 @@ export default class Login extends Component {
             
         }
         this.login(user);
+    }
+
+    login = user => {
+            Axios.get(`api/user?username=${user.username}&password=${user.password}`)
     }
 
     login = user => {

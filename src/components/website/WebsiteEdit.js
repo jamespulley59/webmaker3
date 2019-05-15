@@ -66,15 +66,19 @@ export default class WebsiteEdit extends Component {
     };
 
 render() {
-    const { uid, wid } = this.state;
+    // added wid, to below const to fix error  
+    const { uid, wid} = this.state;
+
 return (
+    
     <div>
         <nav className='navbar navbar-light bg-primary fixed-top row'>
             <div className='col-lg-4 d-none d-lg-block text-center text-white'>
                 <Link className='float-left' to={`/user/${uid}/website`}>
                     <i className='fas fa-arrow-circle-left' />
                 </Link>
-                    <span className=''>Websites</span>
+                {/* deleted "className='' "from below span*/}
+                    <span>Websites</span>
                 <Link className='float-right' to={`/user/${uid}/website/${wid}/page`}>
                     <i className='fas fa-plus-square' />
                 </Link>
