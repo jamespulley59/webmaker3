@@ -46,7 +46,7 @@ onSubmit = e => {
 
   render() {
 
-    const { uid, wid } = this.state;
+    const { uid } = this.state;
 
     return (
 
