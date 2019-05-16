@@ -189,8 +189,8 @@ render() {
     <Router>
       <Switch>
         {/* user pages */}
-        <Route exact path="/" render = { props => (<Login {...props} users={this.state.users}/>)} />
-        <Route exact path="/login" render= { props => (<Login {...props} users={this.state.users} />)} />
+        <Route exact path="/" component = {Login} />
+        <Route exact path="/login" component = {Login} />
         <Route exact path="/register" render= { props => (<Register {...props} users={this.state.users} addUser={this.addUser}/>)}/>
         <Route exact path="/user/:uid" render= { props => (<Profile {...props} users={this.state.users} updateUser={this.updateUser}/>)}/>
         {/* website pages */}

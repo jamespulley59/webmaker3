@@ -75,22 +75,22 @@ return (
         <nav className='navbar navbar-light bg-primary fixed-top row'>
             <div className='col-lg-4 d-none d-lg-block text-center text-white'>
                 <Link className='float-left' to={`/user/${uid}/website`}>
-                    <i className='fas fa-arrow-circle-left' />
+                    <i className='fas fa-chevron-left' />
                 </Link>
                 {/* deleted "className='' " from below span*/}
                     <span>Websites</span>
                 <Link className='float-right' to={`/user/${uid}/website/${wid}/page`}>
-                    <i className='fas fa-plus-square' />
+                    <i className='fas fa-plus' />
                 </Link>
             </div>
 
             <div className='col-lg-8 text-center text-white'>
                 <Link className='d-lg-none float-left' to={`/user/${uid}/website`}>
-                    <i className='fas fa-arrow-circle-left'/>
+                    <i className='fas fa-arrow'/>
                 </Link>
                     <span className=''>Edit Website</span>
                 <Link className='float-righ' to={`/user/${uid}/website`}>
-                    <i className='fas fa-check-circle' />
+                    <i className='fas fa-checke' />
                 </Link>
             </div>
         </nav>

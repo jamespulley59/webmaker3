@@ -111,7 +111,7 @@ export default class Profile extends Component {
     </form>                               
  </div>     
     <nav className="navbar navbar-dark bg-primary fixed-bottom">
-        <Link to={`/user`}>                
+        <Link to={`/login`}>                
             <i className="fas fa-user" />
         </Link>
     </nav>          

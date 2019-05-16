@@ -31,8 +31,8 @@ export default class PageList extends Component {
     }
 
 render() {
-
-    const {uid, wid, pid} = this.state;
+// pid removed from line below
+    const {uid, wid} = this.state;
 
 return (
 

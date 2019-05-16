@@ -52,14 +52,14 @@ onSubmit = e => {
 
 <div>
     
-    <nav className='navbar navbar-light bg-primary fixed-top row nav-height'>
+    <nav className='navbar navbar-light bg-primary fixed-top row nav-height text-white'>
         <div className='col-lg-4 d-none d-lg-block text-center text-white'>
             <Link to={`/user/${uid}/website`} className='float-left'>
                 <i className='fas fa-chevron-left'></i>
             </Link>
                 <span className=''>Websites</span>            
             <Link className='float-right' to={`/user/${uid}/website/new`}>
-                 <i class='far fa-plus-square'></i>
+                 <i class='fas fa-plus'></i>
             </Link>             
         </div>                 
         
@@ -71,7 +71,7 @@ onSubmit = e => {
             </Link>
                 <span className=''>New Website</span>
             <Link className='float-right' to={`/user/${uid}/website`}>
-                <i className='far fa-check-circle'></i>
+                <i className='fas fa-check'></i>
             </Link>
         </div>          
     </nav>
@@ -124,8 +124,8 @@ onSubmit = e => {
                         </div>                            
                         
                         <Link to={`/user/${uid}/website`}
-                            className='btn btn-lg btn-warning'
-                        >Cancel
+                            className='btn btn-lg btn-warning'>
+                            Cancel
                         </Link>                         
                         <button className='btn btn-lg btn-success float-right'>
                             Submit

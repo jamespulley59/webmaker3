@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import Axios from 'axios';
+import axios from 'axios';
 
 export default class Login extends Component {
 
@@ -25,25 +25,21 @@ export default class Login extends Component {
         this.login(user);
     }
 
-    login = user => {
-            Axios.get(`api/user?username=${user.username}&password=${user.password}`)
+    login = async user => {        
+        // this confirms user and password, or not
+            const res = await axios.get(`/api/user?username=${user.username}&password=${user.password}`)
+                if(res.data){
+                    this.props.history.push(`/user/${res.data._id}`);
+                }else {
+                    alert("Please re-enter your Username and Password, or go to Register page");                    
+            }
     }
 
-    login = user => {
-        for(let item of this.props.users) {
-           if(item.username === user.username && item.password === user.password) {
-               this.props.history.push("/user/" + item._id)
-                return;
-           }
-        }
-        alert('Username and password entered were not found');
-    }
-
-    render() {
+       render() {
         return(
       
     <div className='container'>
-      <nav className="navbar navbar-dark bg-primary fixed-top ">
+      <nav className='navbar navbar-dark bg-primary fixed-top'>
                 <span></span>
                 <span className='navbar-brand mb-0 h1'>Login</span>
                 <span></span>   
