@@ -10,8 +10,9 @@ export default class WidgetEdit extends Component {
         name: '',
         text: '',
         size: '',
-        WidgetType: '',
-        width: '',
+        WidgetType: '', 
+        width: '',       
+        height: '',
         url: '',
         uid: '',
         wid: '',
@@ -41,6 +42,7 @@ export default class WidgetEdit extends Component {
             size: currentWidget.size,
             widgetType: currentWidget.widgetType,
             width: currentWidget.width,
+            height: currentWidget.height,
             url: currentWidget.url
         });
     }
@@ -53,7 +55,7 @@ export default class WidgetEdit extends Component {
 
     onSubmit = e => {
         e.preventDefault();
-        const {name, size, text, url, width, widgetType, uid, wid, pid} = this.state;
+        const {name, size, text, url, width, height, widgetType, uid, wid, pid} = this.state;
         const newWidget = {
             _id: this.props.match.params.wgid,
             pageId: pid,
@@ -62,6 +64,7 @@ export default class WidgetEdit extends Component {
             text,
             url,
             width,
+            height,
             widgetType
         }
         
@@ -76,7 +79,7 @@ export default class WidgetEdit extends Component {
     }
 
   render() {
-    const {name, text, size, width, widgetType, url , uid, wid, pid} = this.state;
+    const {name, text, size, width, height, widgetType, url , uid, wid, pid} = this.state;
     if(widgetType === 'HEADING'){
         return (
             <WidgetHeading 
@@ -96,6 +99,7 @@ export default class WidgetEdit extends Component {
             <WidgetImage 
                 name={name}
                 width={width}
+                height={height}
                 url={url}
                 uid={uid} 
                 wid={wid} 
@@ -110,6 +114,7 @@ export default class WidgetEdit extends Component {
             <WidgetYoutube 
                 name={name}
                 width={width}
+                height={height}
                 url={url}
                 uid={uid} 
                 wid={wid} 

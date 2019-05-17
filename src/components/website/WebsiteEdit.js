@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
+// defines website properties 
 export default class WebsiteEdit extends Component {
     state = {
         uid: this.props.match.params.uid,
@@ -10,17 +12,14 @@ export default class WebsiteEdit extends Component {
         description: ''
     };
 
-    componentDidMount() {
-        this.filterWebsites(this.props.websites);
-        this.getWebsite(this.state.wid);
+    // confirms website exists
+    async componentDidMount() {
+        const res = await axios.get(`/api/user/${this.state.uid}/website`); 
+            this.filterWebsites(res.data);
+                this.getWebsite(res.data);
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevProps.match.params.wid !== this.props.match.params.wid) {
-            this.getWebsite(this.props.match.params.wid);
-        }
-    }
-
+    // confirms who made it
     filterWebsites = websites => {
         const newWebsites = websites.filter(
             website => website.developerId === this.state.uid
@@ -30,14 +29,15 @@ export default class WebsiteEdit extends Component {
         });
     };
 
+    // descibes new website
     getWebsite = wid => {
         let currentWeb;
-        for (let website of this.props.websites) {
+        for (let website of this.state.websites) {
             if (website._id === wid) {
                 currentWeb = website;
                 break;
             }
-        };
+        }
         this.setState({
             name: currentWeb.name,
             description: currentWeb.description
@@ -50,23 +50,28 @@ export default class WebsiteEdit extends Component {
         });
     };
 
-    delete = () => {
-        this.props.deleteWeb(this.props.match.params.wid);
+    // adds new to data
+    delete = async () => {
+        await axios.delete(`/api/website/${this.state.wid}`);
         this.props.history.push(`/user/${this.state.uid}/website`);
     };
 
-    onSubmit = e => {
-        e.preventDefault();
-        this.props.editWeb(
-            this.props.match.params.wid,
-            this.state.name,
-            this.state.description
-        );
+    // also adds data
+    onSubmit = async e => {
+        e.preventDefault();        
+        const newWeb = {
+            _id: this.state.wid,
+            name: this.state.name,
+            description: this.state.description,
+            developerId: this.state.uid
+        }
+        await axios.put("/api/website", newWeb);
         this.props.history.push(`/user/${this.state.uid}/website`);
     };
+
 
 render() {
-    // added wid, to below const to fix error  
+    // added wid, to below const to fix error message 
     const { uid, wid} = this.state;
 
 return (

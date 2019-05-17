@@ -1,17 +1,19 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 export default class WebsiteList extends Component {
-
+    // define website
     state={
         uid: this.props.match.params.uid,
         websites: []
     }
-
-    componentDidMount(){
-        this.filterWebsites(this.props.websites);
+    // check if website is here
+    async componentDidMount(){
+        const res = await axios.get(`/api/user/${this.state.uid}/website`);
+            this.filterWebsites(res.data);
     }
-
+    // get particular website
     filterWebsites = (websites) => {
         const newWebsites = websites.filter(
             website => (website.developerId === this.state.uid)

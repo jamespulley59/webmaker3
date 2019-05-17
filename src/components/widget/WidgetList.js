@@ -76,7 +76,7 @@ export default class WidgetList extends Component {
                        case 'IMAGE':
                        return (       
                         <div key = {widget._id}>
-                            <div className='absolute-right'>
+                            <div className='absolute-right' style={{width: widget.width, height: widget.height}} >           
                                 <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget/${widget._id}`}>
                                     <i className='fas fa-cog'></i>   
                                 </Link>
@@ -104,7 +104,8 @@ export default class WidgetList extends Component {
                                         <i className='fas fa-bars'></i>
                                     </span>
                                 </div>
-                                <div className='embed-responsive embed-responsive-16by9'>           
+                                {/* removed embed-responsive-16by9 from end of class name */}
+                                <div className='embed-responsive' style={{width: widget.width, height: widget.height}} >           
                                     <iframe src={widget.url}
                                             title= {widget._id} 
                                             frameBorder='0' 

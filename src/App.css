@@ -32,3 +32,18 @@ label {
 span {
   cursor: pointer;
 }
+.navbar {
+  text-align: center;
+}
+
+#login-nav{
+  display: flex;
+  justify-content: center;
+}
+/* /* .navbar, fixed-botom{
+  display: flex;
+  justify-content: center;
+}  */
+/* .navbar, navbar-dark, bg-primary, fixed-bottom{
+  align-content: right;
+} */ 

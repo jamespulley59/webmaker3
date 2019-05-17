@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import uuid from 'uuid';
+import axios from 'axios';
 
 export default class WebsiteNew extends Component {
-
+// this who the user info is for
 state = {
     uid: this.props.match.params.uid,
     websites: [],
     name: '',
     description: ''
 };
-
-componentDidMount() {
-    this.filterWebsites(this.props.websites);
+// check for website
+async componentDidMount() {
+    const res = await axios.get(`/api/user/${this.state.uid}/website`)
+        this.filterWebsites(res.data);
 }
-
+// choose websites by id
 filterWebsites = websites => {
     const newWebsites = websites.filter(
         website => website.developerId === this.state.uid
@@ -23,13 +25,13 @@ filterWebsites = websites => {
         websites: newWebsites
     });
 };
-
+// what to change/new
 onChange = e => {
     this.setState({
         [e.target.name]: e.target.value
     });
 };
-
+// describe new
 onSubmit = e => {
     const { name, description, uid } = this.state;
     e.preventDefault();
@@ -44,11 +46,11 @@ onSubmit = e => {
 };
 
 
-  render() {
+render() {
 
     const { uid } = this.state;
  
-    return (
+return (
 
 <div>
     

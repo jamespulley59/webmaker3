@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import uuid from 'uuid';
 
 export default class Register extends Component {
 
@@ -22,42 +23,40 @@ export default class Register extends Component {
         this.register(username, password, password2) ;
     }
 
-    register = (username, password, password2) =>{
+    async register(username, password, password2) {
         // if passwords don't match
         if(password !== password2) {
             alert('The passwords do not match. Please enter again');
             return;
         }
-        // see if username is available
-        const res = axios.get(`/api/user?username=${username}`);
-        console.log(res.data);
-    //     // if username is already taken
-    //     for(let user of this.props.users) {
-    //         if(user.username === username){
-    //             alert('That username is in use. Please choose a new username.')
-    //             return;
-    //         }
-    //     }
-    //     //  adding new user into data-base/array
-    //     const newUser = {
-    //         _id: uuid(),
-    //         username,
-    //         password,
-    //         email: "",
-    //         firstName: "",
-    //         lastName: ""
-    //     };        
-    //     this.props.addUser(newUser);    
-    // // navigate to profile page
-    // this.props.history.push(`/user/${newUser._id}`);
-    // }
+        // see if username is available        
+        const res = await axios.get(`/api/user?username=${username}`);
+            if(res.data) {
+                alert('That username is currently in use. Please create another username.');
+                return;
+            } else{
+                const newUser = {
+                    _id: uuid(),
+                    username,
+                    password,
+                    email: "",
+                    firstName: "",
+                    lastName: ""
+                };
+                const res2 = await axios.post("/api/user", newUser);
+                this.props.history.push(`/user/${res2.data._id}`);
+            }
+        }
+    
+        render() {
 
-    // render() { 
-        // const {username, password, password2} = this.state
+            const {username, password, password2} = this.state
+               
         return (
+
         <div className='container'>
             {/* <h1>Register</h1> */}
-            <nav className="navbar navbar-dark bg-primary fixed-top ">
+            <nav className='navbar navbar-dark bg-primary fixed-top'>
                 <span></span>
                 <span className='navbar-brand mb-0 h1'>Register</span>
                 <span></span>   
