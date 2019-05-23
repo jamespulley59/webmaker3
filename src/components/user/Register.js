@@ -30,11 +30,11 @@ export default class Register extends Component {
             return;
         }
         // see if username is available        
-        const res = await axios.get(`/api/user?username=${username}`);
-            if(res.data) {
+         const res = await axios.get(`/api/user?username=${username}`);
+             if(res.data) {
                 alert('That username is currently in use. Please create another username.');
-                return;
-            } else{
+                 return;
+             } else{
                 const newUser = {
                     _id: uuid(),
                     username,
@@ -42,7 +42,7 @@ export default class Register extends Component {
                     email: "",
                     firstName: "",
                     lastName: ""
-                };
+                 };
                 const res2 = await axios.post("/api/user", newUser);
                 this.props.history.push(`/user/${res2.data._id}`);
             }

@@ -5,32 +5,36 @@ import axios from 'axios';
 
 export default class Profile extends Component {
 
+// what a user is
     state = {
         username: '',
-        email: '',
-        password: '',
+        email: '',        
         firstName: '',
-        lastName: ''
+        lastName: '',
+        password: '',
+        oldUsername: ''
     }
-    // check if username is taken
+// check if username is available
     async componentDidMount(){
         const uid = this.props.match.params.uid;
         const res = await axios.get(`/api/user/${uid}`);
         if(res.data){
             this.showUser(res.data);
         } else {
-            alert('That user was not found. Please try another.');
+            alert('That user was not found. Please try another username.');
         }
     }
     // all user info, optional
     showUser = (user) => {
         const {username, email, firstName, lastName, password} = user;
         this.setState({
-            username, 
+            username,
+// shouldn't we have a line for password on user profile page or delete password from this page. 
             password,
             email, 
             firstName, 
-            lastName                      
+            lastName,
+            oldUsername: username                      
         });
     }
 
@@ -39,18 +43,19 @@ export default class Profile extends Component {
             [e.target.name]: e.target.value
         });
     }
-     // see if username is already taken
+
+// see if username is already taken
     onSubmit = async e => {
         e.preventDefault();
         const {username, email, firstName, lastName, password, oldUsername} = this.state;
         if(username !== oldUsername) {    
-            const res = await axios.get(`/api/user?username=${username}`);
+             const res = await axios.get(`/api/user?username=${username}`);
         if(res.data){
-            alert('Sorry. That username has been taken. Please create another.');
+            alert('That username is in use. Please select another');
             return;
-    } 
         }
-        // compiling new/updated user info
+    }
+// compiling new/updated user info
         const newUser = {
             _id: this.props.match.params.uid,
             username,
@@ -60,7 +65,7 @@ export default class Profile extends Component {
             lastName
         }
         const res = await axios.put('/api/user', newUser);
-        alert('Your new information has been')
+        alert('Your new information has been added to your records')
         this.showUser(res.data);
     }
         
@@ -71,11 +76,12 @@ export default class Profile extends Component {
     return(
 
 <div>          
-    <nav className='navbar navbar-dark bg-primary fixed-top ' to='/user/:uid'>
+    <nav className='navbar navbar-dark bg-primary fixed-top'> 
         <span></span>
         <span className='navbar-brand mb-0 h1'>Profile</span>
-        <button className='btn' to={`/user`}>
-            <i className='fas fa-check'></i>
+        <button  className='btn' form="profileForm">
+            <i className='fas fa-check'>  
+            </i>
         </button>
     </nav>           
     <div className='container'>
@@ -89,7 +95,8 @@ export default class Profile extends Component {
                     id='username'
                     name='username'
                     value={username}
-                    onChange={this.onChange} />               
+                    onChange={this.onChange} 
+                />               
             </div>
             <div className='form-group'>
                 <label htmlFor='email'>Email</label>
@@ -130,6 +137,7 @@ export default class Profile extends Component {
     </form>                               
  </div>     
     <nav className='navbar navbar-dark bg-primary fixed-bottom'>
+        <span></span>
         <Link to={`/login`}>                
             <i className='fas fa-user' />
         </Link>
@@ -137,4 +145,4 @@ export default class Profile extends Component {
 </div>        
     )              
 }  
-}              
+}

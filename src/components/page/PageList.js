@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 export default class PageList extends Component {
 
@@ -19,14 +20,10 @@ export default class PageList extends Component {
         this.filterPage(this.state.wid);
     }
 
-    filterPage = (wid) => {
-        const currentPages = this.props.pages.filter(
-            (page) => (
-                page.websiteId === wid
-            )
-        )
+    filterPage = async (wid) => {
+        const res = await axios.get(`/api/website/${this.state.wid}/page`)
         this.setState({
-            pages: currentPages
+            pages: res.data
         })
     }
 
@@ -38,7 +35,7 @@ return (
 
 <div>
     <nav className='navbar navbar-light fixed-top bg-light'>
-        <Link className='color-black' to={`/user/${uid}/website`}>
+        <Link className='color-black' to={`/user/${uid}website/`}>
             <i className='fas fa-chevron-left' />
         </Link>
         <span className='navbar-brand'>
@@ -71,7 +68,7 @@ return (
 
     <footer className='navbar navbar-light fixed-bottom bg-light'>
         <div className='full-width'>
-            <Link className='color-black float-right' to={`/user/${uid}`}>            
+            <Link className='color-black float-right' to={`/user/${uid}`}>    
                 <i className='fas fa-user' />                
             </Link>
         </div>

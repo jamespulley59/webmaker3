@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 export default class WidgetList extends Component {
 
@@ -16,17 +17,13 @@ export default class WidgetList extends Component {
             wid: this.props.match.params.wid,
             pid: this.props.match.params.pid
         })
-        this.filterWidgets(this.state.pid)
+        this.filterWidgets(this.state.pid);
     }
 
-    filterWidgets = (pid) => {
-      const widgets = this.props.widgets.filter(
-        (widget) => (
-            widget.pageId === pid
-        )            
-      )
+    filterWidgets = async (pid) => {
+      const res = await axios.get(`/api/page/${pid}/widget`)
        this.setState({
-           widgets
+           widgets: res.data
        })
     }
 
@@ -76,7 +73,7 @@ export default class WidgetList extends Component {
                        case 'IMAGE':
                        return (       
                         <div key = {widget._id}>
-                            <div className='absolute-right' style={{width: widget.width, height: widget.height}} >           
+                            <div className='absolute-right'>           
                                 <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget/${widget._id}`}>
                                     <i className='fas fa-cog'></i>   
                                 </Link>
@@ -92,7 +89,7 @@ export default class WidgetList extends Component {
                                 </img>
                             </div>
                         </div>
-                )                             
+                    )                             
                        case 'YOUTUBE':
                         return(   
                             <div key = {widget._id}>
@@ -105,7 +102,7 @@ export default class WidgetList extends Component {
                                     </span>
                                 </div>
                                 {/* removed embed-responsive-16by9 from end of class name */}
-                                <div className='embed-responsive' style={{width: widget.width, height: widget.height}} >           
+                                <div className='embed-responsive embed-responsive-16by9' style={{width: widget.width, height: widget.height}} >           
                                     <iframe src={widget.url}
                                             title= {widget._id} 
                                             frameBorder='0' 
@@ -124,7 +121,7 @@ export default class WidgetList extends Component {
         }
     </div>
 
-        <footer className='navbar navbar-light fixed-bottom bg-dark'>
+        <footer className='navbar navbar-dark-primary fixed-bottom bg-light'>
                 <div className='full-width'>
                     <Link className='color-black float-right' to={`/user/${uid}`}>
                         <i className='fas fa-user'></i>

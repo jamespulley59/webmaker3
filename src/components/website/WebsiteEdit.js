@@ -12,14 +12,14 @@ export default class WebsiteEdit extends Component {
         description: ''
     };
 
-    // confirms website exists
+// confirms website exists
     async componentDidMount() {
         const res = await axios.get(`/api/user/${this.state.uid}/website`); 
-            this.filterWebsites(res.data);
-                this.getWebsite(res.data);
+            await this.filterWebsites(res.data);
+                this.getWebsite(this.state.wid);
     }
 
-    // confirms who made it
+// confirms who made it
     filterWebsites = websites => {
         const newWebsites = websites.filter(
             website => website.developerId === this.state.uid
@@ -29,7 +29,7 @@ export default class WebsiteEdit extends Component {
         });
     };
 
-    // descibes new website
+// describes new website
     getWebsite = wid => {
         let currentWeb;
         for (let website of this.state.websites) {
@@ -50,13 +50,13 @@ export default class WebsiteEdit extends Component {
         });
     };
 
-    // adds new to data
+// adds new to data
     delete = async () => {
         await axios.delete(`/api/website/${this.state.wid}`);
         this.props.history.push(`/user/${this.state.uid}/website`);
     };
 
-    // also adds data
+// also adds data
     onSubmit = async e => {
         e.preventDefault();        
         const newWeb = {
@@ -65,7 +65,7 @@ export default class WebsiteEdit extends Component {
             description: this.state.description,
             developerId: this.state.uid
         }
-        await axios.put("/api/website", newWeb);
+        await axios.put('/api/website', newWeb);
         this.props.history.push(`/user/${this.state.uid}/website`);
     };
 
@@ -82,7 +82,7 @@ return (
                 <Link className='float-left' to={`/user/${uid}/website`}>
                     <i className='fas fa-chevron-left' />
                 </Link>
-                {/* deleted "className='' " from below span*/}
+                {/* deleted 'className='' ' from below span*/}
                     <span>Websites</span>
                 <Link className='float-right' to={`/user/${uid}/website/${wid}/page`}>
                     <i className='fas fa-plus' />
@@ -94,8 +94,8 @@ return (
                     <i className='fas fa-arrow'/>
                 </Link>
                     <span className=''>Edit Website</span>
-                <Link className='float-righ' to={`/user/${uid}/website`}>
-                    <i className='fas fa-checke' />
+                <Link className='float-right' to={`/user/${uid}/website`}>
+                    <i className='fas fa-check' />
                 </Link>
             </div>
         </nav>
