@@ -3,11 +3,11 @@ import {Link} from 'react-router-dom';
 
 export default class WidgetYoutube extends Component {
 
-  onChange = e => {
+    onChange= e => {
         this.props.onChange(e);
     }
 
-    onSubmit = e => {
+    onSubmit= e => {
         this.props.onSubmit(e)
     }
 
@@ -24,17 +24,17 @@ export default class WidgetYoutube extends Component {
 <div>
 
    <nav className='navbar navbar-light bg-light fixed-top'>
-        <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget`}>
+        <Link className='color-black' to={`/user/${uid}/website/${wid}/page/${pid}/widget`}>
             <i className='fas fa-chevron-left'></i>
         </Link>
             <span className='navbar-brand mb-0 h1'>Edit Widget</span>
-            <button className="color-black btn" form="youtubeForm">
-                <i className="fas fa-check" />
-            </button>
+        <button className="color-black btn" form="youtubeForm">
+            <i className="fas fa-check" />
+        </button>
     </nav>
 
     <div className='container'>
-        <form id='youtubeForm onSubmit={this.onSubmit'>
+        <form id='youtubeForm' onSubmit={this.onSubmit}>
             <div className='form-group'>
                 <label htmlFor='name'>
                    <b>Name</b>
@@ -42,21 +42,21 @@ export default class WidgetYoutube extends Component {
                     <input
                         id = 'name'
                         name = 'name'
-                        type = 'text'
-                        className = 'form-control' 
                         value = {name}
+                        type = 'text'
+                        className = 'form-control'   
                         onChange = {this.onChange} 
                     />       
             </div>
             <div className='form-group'>
-                <label htmlFor='text'>
+                <label htmlFor='url'>
                     <b>Url</b>
                 </label>
-                    <input 
+                    <input
+                        type = 'text' 
                         id = 'url'
-                        type = 'text'
                         name = 'url'
-                        value = 'url'
+                        value = {url}
                         className = 'form-control'
                         onChange = {this.onChange}
                     />    
@@ -66,22 +66,20 @@ export default class WidgetYoutube extends Component {
                     <b>Width</b>
                 </label>
                     <input
-                        id = 'width'
                         type = 'text'
+                        id = 'width'     
                         name = 'width'
-                        value = 'width'
+                        value = {width}
                         className = 'form-control'
                         onChange = {this.onChange}
                     />   
             </div>
 
-            <button type='button' onClick={this.onDelete} className='btn btn-danger btn-block'>
+            <button type='button' onClick={this.onDelete} className='btn btn-danger btn-block'>      
                 Delete
             </button>
         </form>    
-    </div>                         
-                {/* <Link to={`/user/:${uid}/website/${wid}/page/${pid}/widget`} className='btn btn-danger btn-block'>Delete</Link> */}
-        
+    </div>                       
     
     <footer className='navbar navbar-light bg-light fixed-bottom'>
         <div className='full-width'>

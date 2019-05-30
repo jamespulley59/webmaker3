@@ -32,7 +32,7 @@ onChange = e => {
     });
 };
 // describe new
-onSubmit = e => {
+onSubmit = async e => {
     const { name, description, uid } = this.state;
     e.preventDefault();
     const newWeb = {
@@ -41,7 +41,7 @@ onSubmit = e => {
         developerId: uid,
         description
     };
-    this.props.addWeb(newWeb);
+    await axios.post("/api/website", newWeb);
     this.props.history.push(`/user/${this.state.uid}/website`);
 };
 

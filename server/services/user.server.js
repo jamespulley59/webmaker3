@@ -16,7 +16,6 @@ module.exports = function(app) {
             user = users.find((user)=>{
                return user.username === username && user.password === password
             })  
-        res.json(user);    
         }
 // checks username availability 
          else if(username) {
@@ -24,7 +23,6 @@ module.exports = function(app) {
                  return user.username === username;
             })
          }
-
          res.json(user);
     });
 

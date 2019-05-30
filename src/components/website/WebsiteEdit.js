@@ -50,7 +50,7 @@ export default class WebsiteEdit extends Component {
         });
     };
 
-// adds new to data
+// deletes data
     delete = async () => {
         await axios.delete(`/api/website/${this.state.wid}`);
         this.props.history.push(`/user/${this.state.uid}/website`);
@@ -91,12 +91,12 @@ return (
 
             <div className='col-lg-8 text-center text-white'>
                 <Link className='d-lg-none float-left' to={`/user/${uid}/website`}>
-                    <i className='fas fa-arrow'/>
+                    <i className='fas fa-chevron-left'/>
                 </Link>
                     <span className=''>Edit Website</span>
-                <Link className='float-right' to={`/user/${uid}/website`}>
-                    <i className='fas fa-check' />
-                </Link>
+                <button form="editWebForm" className="float-right btn">
+                    <i className="fas fa-check" />
+                </button>
             </div>
         </nav>
 
