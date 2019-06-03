@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import uuid from 'uuid';
+
 import axios from 'axios';
 
 export default class WebsiteNew extends Component {
@@ -36,7 +36,6 @@ onSubmit = async e => {
     const { name, description, uid } = this.state;
     e.preventDefault();
     const newWeb = {
-        _id: uuid(),
         name,
         developerId: uid,
         description
@@ -61,7 +60,7 @@ return (
             </Link>
                 <span className=''>Websites</span>            
             <Link className='float-right' to={`/user/${uid}/website/new`}>
-                 <i class='fas fa-plus'></i>
+                 <i className='fas fa-plus'></i>
             </Link>             
         </div>                 
         
