@@ -10,7 +10,7 @@ export default class WidgetEdit extends Component {
 
     state={
         name: '',
-        text: '',
+        text: 0,
         size: '',
         WidgetType: '', 
         width: '',       
@@ -54,6 +54,7 @@ export default class WidgetEdit extends Component {
     onSubmit = e => {
         e.preventDefault();
         const {name, size, text, url, width, height, widgetType, uid, wid, pid} = this.state;
+
         const newWidget = {
             _id: this.props.match.params.wgid,
             pageId: pid,
@@ -64,6 +65,17 @@ export default class WidgetEdit extends Component {
             width,
             height,
             widgetType
+        } 
+
+        if (widgetType === 'YOUTUBE') {
+            // split url into array os strings
+        const spited = newWidget.url.split('/');
+            // count number of strings in splited url
+        const length = splited.length;
+            // get last element in url === videoId 
+        const videoId = splited[length -1];
+            // parse url into embedded version
+        newWidget.url = 'https://www.youtube.com/embed/' + videoId;
         }
         
         Axios.put('/api/widget', newWidget)

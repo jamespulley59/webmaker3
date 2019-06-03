@@ -16,7 +16,6 @@ UserModel.findUserByCredentials = (username, password) => {
 // find by username only
 UserModel.findUserByUsername = (username) => {
     return UserModel.findOne({username: username});
-
 }
 
 //let mongoose find user
@@ -26,7 +25,8 @@ UserModel.findUserById = (uid) => {
 
 //change user info
 UserModel.updateUser = (user) => {
-    return UserModel.updateOne({_id: user._id}, user)
+    return UserModel.updateOne({_id: user._id}, user);
 }
+
 
 module.exports = UserModel;

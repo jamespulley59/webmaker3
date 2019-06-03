@@ -35,7 +35,7 @@ return (
 
 <div>
     <nav className='navbar navbar-light fixed-top bg-light'>
-        <Link className='color-black' to={`/user/${uid}website/`}>
+        <Link className='color-black' to={`/user/${uid}website`}>
             <i className='fas fa-chevron-left' />
         </Link>
         <span className='navbar-brand'>
