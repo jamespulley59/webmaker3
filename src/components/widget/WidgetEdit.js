@@ -69,7 +69,7 @@ export default class WidgetEdit extends Component {
 
         if (widgetType === 'YOUTUBE') {
             // split url into array os strings
-        const spited = newWidget.url.split('/');
+        const splited = newWidget.url.split('/');
             // count number of strings in splited url
         const length = splited.length;
             // get last element in url === videoId 
