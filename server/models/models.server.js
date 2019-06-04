@@ -6,8 +6,7 @@ if(process.env.MLAB_USERNAME_WEBDEV) {
     var username = process.env.MLAB_USERNAME_WEBDEV; 
 // get from environment
     var password = process.env.MLAB_PASSWORD_WEBDEV;
-    connectionString = 'mongodb://' + username + ':' + password;
-    connectionString += '@ds0000.mlab.com:29004/dasdasds'; 
+    connectionString = `mongodb+srv://${username}:${password}@cluster0-54zmk.mongodb.net/test?retryWrites=true&w=majority`
 // use yours
   }
 // use mongoose to connect to database
