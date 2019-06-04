@@ -1,6 +1,6 @@
 module.exports = function(app) {
 
-const userModel = require('../models/user/user.model');
+const userModel = require('../models/user/User.model');
 
 // name and password match? ok
     app.get('/api/user', async (req, res)=> {
