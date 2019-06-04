@@ -1,5 +1,5 @@
 module.exports = function(app) {
-  const WebsiteModel = require('../models/website/website.model');
+  const WebsiteModel = require('../models/website/Website.model');
     
       //   get all websites that match user id.
       app.get('/api/user/:uid/website', async (req, res) => {
