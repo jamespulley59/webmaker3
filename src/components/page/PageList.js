@@ -11,7 +11,12 @@ export default class PageList extends Component {
         pages: []    
     }
 
-    async componentDidMount () {     
+    async componentDidMount () {
+        const isLoggedIn = await this.props.loggedIn();
+        if (!isLoggedIn) {
+          this.props.history.push('/login');
+          return;
+        }     
         await this.setState({
             pid: this.props.match.params.pid,
             uid: this.props.match.params.uid,
@@ -35,7 +40,7 @@ return (
 
 <div>
     <nav className='navbar navbar-light fixed-top bg-light'>
-        <Link className='color-black' to={`/user/${uid}website`}>
+        <Link className='color-black' to={`/user/${uid}/website`}>
             <i className='fas fa-chevron-left' />
         </Link>
         <span className='navbar-brand'>
@@ -49,16 +54,14 @@ return (
     <div className='container'>
         <ul className='list-group'>
             {
-                this.state.pages.map((page) => ( 
-                    <div>                   
+                this.state.pages.map((page) => (                 
                         <li key={page._id} className='list-group-item'>
                             <Link to={`/user/${uid}/website/${wid}/page/${page._id}/widget`}>{page.name}</Link>
                             <Link className='float-right' to={`/user/${uid}/website/${wid}/page/${page._id}`}>
                                 <i className='fas fa-cog' />
                             </Link>
-                        </li>
-                        
-                    </div>
+                        </li>                       
+                    
                     )
                 )
             }

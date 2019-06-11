@@ -6,12 +6,14 @@ export default class Login extends Component {
 
     state = {
         username: "",
-        password: ""
+        password: "",
+        showAlert: false
     }
 
     onChange = e => {
         this.setState ({
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
+            showAlert: false
         })
     }       
 
@@ -27,13 +29,15 @@ export default class Login extends Component {
 
     login = async user => {        
         // this confirms user and password, or not
-            const res = await axios.get(`/api/user?username=${user.username}&password=${user.password}`)
-                if(res.data){
-                    this.props.history.push(`/user/${res.data._id}`);
-                }else {
-                    alert("Please re-enter your Username and Password, or go to Register page");                    
-            }
+    try {
+        const res = await axios.post('api/login', user);
+        this.props.history.push(`/user/${res.data._id}`);
+    } catch {
+        this.setState({
+            showAlert: true
+        })
     }
+};         
 
     render() {
 
@@ -42,10 +46,12 @@ export default class Login extends Component {
 <div className='container'>
 
     <nav id="login-nav" className='navbar navbar-dark bg-primary fixed-top'>
-            {/* <span></span> */}
+            
             <span className='navbar-brand mb-0 h1'>Login</span>
-           
-            {/* <span></span>    */}
+                {this.state.showAlert? 
+                    (<div className='alert alert-danger'>Your username and password do not match our records, please try again.   Or if you are a new user, go to the Registration page    
+                    </div>): null
+                }  
     </nav>
 
     <form onSubmit={this.onSubmit}>

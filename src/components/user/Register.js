@@ -3,15 +3,23 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 export default class Register extends Component {
+  //what is needed to register
   state = {
     username: "",
     password: "",
-    password2: ""
+    password2: "",
+    //if too short/don't match
+    showUsernameAlert: false,
+    showPasswordAlert: false,
+    showUsernameLengthAlert: false,
+    showPasswordLengthAlert: false
   };
 
   onChange = e => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
+      showUsernameAlert: false,
+      showPasswordAlert: false
     });
   };
 
@@ -23,18 +31,35 @@ export default class Register extends Component {
   };
 
   async register(username, password, password2) {
-
-    // if passwords don't match
-    if (password !== password2) {
-      alert("The passwords do not match. Please enter again");
+// username minimum length
+    if(username.length < 5) {
+      this.setState({
+        showUsernameLengthAlert: true
+      })
       return;
     }
-    // see if username is available
+// password minimum length
+if(password.length < 5) {
+  this.setState({
+    showPasswordLengthAlert: true
+  })
+  return;
+}
+// if passwords don't match
+    if (password !== password2) {
+        this.setState({
+          showPasswordAlert: true
+        })
+      return;
+    }
+// see if username is available
     const res = await axios.get(`/api/user?username=${username}`);
     if (res.data) {
-      alert(
-        "That username is currently in use. Please create another username."
-      );
+      
+      this.setState({
+        showUsernameAlert: true
+      })
+    
       return;
     } else {
       const newUser = {
@@ -44,8 +69,8 @@ export default class Register extends Component {
         firstName: "",
         lastName: ""
       };
-      console.log(newUser);
-      const res2 = await axios.post("/api/user", newUser);
+      
+      const res2 = await axios.post("/api/register", newUser);
       this.props.history.push(`/user/${res2.data._id}`);
     }
   }
@@ -53,12 +78,24 @@ export default class Register extends Component {
   render() {
     const { username, password, password2 } = this.state;
     return (
-      <div className="container">
-        {/* <h1>Register</h1> */}
-        <nav className="navbar navbar-dark bg-primary fixed-top">
-          <span />
-          <span className="navbar-brand mb-0 h1">Register</span>
-          <span />
+      <div className="container">      
+        <nav className="navbar navbar-dark bg-primary fixed-top"> 
+        <span></span>        
+          <span className="navbar-brand mb-0 h1">Register
+          </span>
+          <span></span>
+            {this.state.showPasswordAlert && (
+              <div className='alert alert-danger'>
+                The passwords do not match. Please re-enter
+              </div>)}
+            {this.state.showUsernameLengthAlert && (
+              <div className='alert alert-danger'>
+               The Username must be at least 6 characters long.
+              </div>)} 
+            {this.state.showPasswordLengthAlert && (
+              <div className='alert alert-danger'>
+                The Password must be at least 6 characters long.
+              </div>)}       
         </nav>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">

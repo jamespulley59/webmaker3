@@ -13,6 +13,11 @@ state = {
 };
 // check for website
 async componentDidMount() {
+    const isLoggedIn = await this.props.loggedIn();
+    if (!isLoggedIn) {
+      this.props.history.push('/login');
+      return;
+    }
     const res = await axios.get(`/api/user/${this.state.uid}/website`)
         this.filterWebsites(res.data);
 }

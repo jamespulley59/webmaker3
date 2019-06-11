@@ -13,6 +13,11 @@ export default class PageEdit extends Component {
     }
 
      async componentDidMount() {
+        const isLoggedIn = await this.props.loggedIn();
+        if (!isLoggedIn) {
+          this.props.history.push('/login');
+          return;
+        }
         await this.setState({
             uid: this.props.match.params.uid,
             wid: this.props.match.params.wid,
@@ -74,6 +79,7 @@ export default class PageEdit extends Component {
             <div className='form-group'>
                 <label htmlFor='name'>
                     <b>Name</b>
+                    
                 </label>
                 <input
                     className='form-control'
@@ -111,7 +117,7 @@ export default class PageEdit extends Component {
     <footer className='navbar navbar-light fixed-bottom bg-light'>
         <div className='full-width'>
             <Link
-                className='color-black float-right'to={`/user/${uid}`}>                           
+                className='color-black float-right' to={`/user/${uid}`}>                           
                     <i className='fas fa-user' />
             </Link>
         </div>

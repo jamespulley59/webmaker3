@@ -12,16 +12,24 @@ export default class Profile extends Component {
         firstName: '',
         lastName: '',
         password: '',
-        oldUsername: ''
+        oldUsername: '',
+        showUpdateComplete: false,
+        showUpdateError: false
     }
-// check if username is available
+// check if user is logged in
     async componentDidMount(){
+        const isLoggedIn = await this.props.loggedIn();
+        if (!isLoggedIn) {
+          this.props.history.push('/login');
+          return;
+        }
+        
         const uid = this.props.match.params.uid;
         const res = await axios.get(`/api/user/${uid}`);
         if(res.data){
             this.showUser(res.data);
         } else {
-            alert('That user was not found. Please try another username.');
+            
         }
     }
     // all user info, optional
@@ -40,22 +48,29 @@ export default class Profile extends Component {
 
     onChange = e => {
         this.setState({
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
+            showUpdateComplete: false,
+            showUpdateError: false
         });
+        return
     }
 
 // see if username is already taken
     onSubmit = async e => {
         e.preventDefault();
         const {username, email, firstName, lastName, password, oldUsername} = this.state;
+        
         if(username !== oldUsername) {    
-             const res = await axios.get(`/api/user?username=${username}`);
-        if(res.data){
-            alert('That username is in use. Please select another');
-            return;
+            const res = await axios.get(`/api/user?username=${username}`);
+            if(res.data){
+                this.setState({
+                    showUpdateError: true
+                })
+                return;
+            }
+            
         }
-    }
-// compiling new/updated user info
+        // compiling new/updated user info
         const newUser = {
             _id: this.props.match.params.uid,
             username,
@@ -65,10 +80,16 @@ export default class Profile extends Component {
             lastName
         }
         await axios.put('/api/user', newUser);
-        alert('Your new information has been added to your records')
-        //this.showUser(res.data);
+        this.setState({
+            showUpdateComplete: true 
+        })
     }
-        
+// user logout
+logout = async () => {
+    await axios.post("/api/logout");
+    this.props.history.push("/login");
+    } 
+
     render() {
 
         const {username, email, firstName, lastName} = this.state;
@@ -85,6 +106,17 @@ export default class Profile extends Component {
         </button>
     </nav>           
     <div className='container'>
+
+        {this.state.showUpdateComplete && (
+            <div className='alert alert-success'>
+                Your new information has been added to your records.
+            </div>)}
+
+            {this.state.showUpdateError && (
+            <div className='alert alert-danger'>
+                Username is taken, please try another one
+            </div>)}
+
         <form id='profileForm' onSubmit={this.onSubmit}>
             <div className='form-group'>
                 <label htmlFor='username'>Username</label>
@@ -131,9 +163,11 @@ export default class Profile extends Component {
                     value={lastName}
                     onChange={this.onChange} />               
             </div>            
-            <Link className='btn btn-primary btn-block'
-                to={`/user/${this.props.match.params.uid}/website`}>Websites</Link>                         
-            <Link to={`/login`} className='btn btn-danger btn-block'>Logout</Link> 
+        <Link className='btn btn-primary btn-block'
+            to={`/user/${this.props.match.params.uid}/website`}>Websites
+        </Link>                         
+        <button type='button' onClick={this.logout} className='btn btn-danger btn-block'>Logout
+        </button> 
     </form>                               
  </div>     
     <nav className='navbar navbar-dark bg-primary fixed-bottom'>

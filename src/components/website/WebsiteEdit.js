@@ -14,6 +14,11 @@ export default class WebsiteEdit extends Component {
 
 // confirms website exists
     async componentDidMount() {
+        const isLoggedIn = await this.props.loggedIn();
+        if (!isLoggedIn) {
+          this.props.history.push('/login');
+          return;
+        }
         const res = await axios.get(`/api/user/${this.state.uid}/website`); 
             await this.filterWebsites(res.data);
                 this.getWebsite(this.state.wid);
