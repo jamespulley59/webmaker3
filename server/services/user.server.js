@@ -1,7 +1,11 @@
 module.exports = function(app) {
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const userModel = require('../models/user/user.model');
+const userModel = require('../models/user/User.model');
+const bcrypt = require('bcryptjs');
+
+//encrypt password
+const salt = bcrypt.genSaltSync(10);
 
 //saves data
 passport.serializeUser(serializeUser);
@@ -27,11 +31,19 @@ function deserializeUser(user, done) {
   passport.use(new LocalStrategy(localStrategy));
 
   async function localStrategy(username, password, done) {
-     const data = await userModel.findUserByCredentials(username, password);
-     if (data) {
+    //check if username is in db
+     const data = await userModel.findUserByUsername(username);
+     // check if encrypted passwords (hash) match
+     if (data && bcrypt.compareSync(password, data.password)) {
        return done(null, data);
+// check if password is encrypted
+     } else if (data && password === data.password) {
+// encrypt password
+    data.password = bcrypt.hashSync(data.password, salt);
+      await userModel.updateUser(data);
+        return done(null, data);
      } else {
-       return done(null, false);
+         return done(null, false);
      }
    }
   
@@ -49,12 +61,15 @@ app.post('/api/login', passport.authenticate('local'), (req, res) => {
  // to logOut
  app.post("/api/logout", (req, res) => {
   req.logOut();
-  res.send(200);
+  res.sendStatus(200);
 })
 
 // register
 app.post("/api/register", async (req, res) => {
   const user = req.body;
+// encrypt password
+user.password = bcrypt.hashSync(user.password, salt);
+
   const data = await userModel.createUser(user);
   req.login(data, () => {
     res.json(data);
@@ -97,5 +112,18 @@ app.put('/api/user', async (req, res) => {
     const newUser = req.body;
     const data = await userModel.updateUser(newUser);
     res.json(data);
-  });    
+  }); 
+  //find all users
+  app.get('/api/users', async (req, res) => {
+    const data = await userModel.findAllUsers();
+    res.json(data);
+  }) 
+  
+  //delete
+app.delete('/api/user/:id', async (req, res) => {
+  const id = req.params['id'];
+  const data= await userModel.deleteUser(id);
+  res.json(data);
+})
+
 };

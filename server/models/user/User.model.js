@@ -28,4 +28,14 @@ UserModel.updateUser = (user) => {
     return UserModel.updateOne({_id: user._id}, user);
 }
 
+//find all users
+UserModel.findAllUsers = () => {
+    return UserModel.find();
+}
+
+//delete user
+UserModel.deleteUser = (id) => {
+    return UserModel.deleteOne({_id: id});
+}
+
 module.exports = UserModel;

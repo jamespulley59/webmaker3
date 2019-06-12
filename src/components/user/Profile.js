@@ -14,12 +14,13 @@ export default class Profile extends Component {
         password: '',
         oldUsername: '',
         showUpdateComplete: false,
-        showUpdateError: false
+        showUpdateError: false,
+        role: ''
     }
 // check if user is logged in
     async componentDidMount(){
         const isLoggedIn = await this.props.loggedIn();
-        if (!isLoggedIn) {
+        if (isLoggedIn === 0) {
           this.props.history.push('/login');
           return;
         }
@@ -34,7 +35,7 @@ export default class Profile extends Component {
     }
     // all user info, optional
     showUser = (user) => {
-        const {username, email, firstName, lastName, password} = user;
+        const {username, email, firstName, lastName, password, role} = user;
         this.setState({
             username,
 // shouldn't we have a line for password on user profile page or delete password from this page. 
@@ -42,7 +43,8 @@ export default class Profile extends Component {
             email, 
             firstName, 
             lastName,
-            oldUsername: username                      
+            oldUsername: username,
+            role                       
         });
     }
 
@@ -92,8 +94,8 @@ logout = async () => {
 
     render() {
 
-        const {username, email, firstName, lastName} = this.state;
-
+        const {username, email, firstName, lastName, role} = this.state;
+    
     return(
 
 <div>          
@@ -167,7 +169,13 @@ logout = async () => {
             to={`/user/${this.props.match.params.uid}/website`}>Websites
         </Link>                         
         <button type='button' onClick={this.logout} className='btn btn-danger btn-block'>Logout
-        </button> 
+        </button>
+
+        {
+            role === 'admin'? ( <Link className='btn btn-block btn-warning' to='/userManage'>Manage All Users</Link> )
+            : null
+        }
+        
     </form>                               
  </div>     
     <nav className='navbar navbar-dark bg-primary fixed-bottom'>
